@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 300px;
+  /*background-image: url("/../assets/my_canvas/radar_01.jpg");*/
+}
+
+img {
+  width: 1000px;
+  /* height: fit-content; */
+}
+
+div {
+  display: flex;
+  height: 100%;
+}
+.canvas-card {
+  max-width: 400px;
+  margin: 2em;
+  height: 200px;
+
+  background-size: cover;
+  background-position-y: -20vh;
+}
