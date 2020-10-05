@@ -1,102 +1,146 @@
-import { IQQuestion } from '../interfaces/interfaces';
+import { IQQuestion, ITrustBuildCategory } from '../interfaces/interfaces';
 
 export class QuestionnaireFactory {
-  public static createBusinessQuestionnaire(): IQQuestion[] {
+  public static createBusinessQuestionnaire(): ITrustBuildCategory[] {
     return [
       {
         category: 'Plattform-Betreiber',
-        question: 'Welche Mission hat das Unternehmen',
-        answers: [
+        questions: [
           {
+            question: 'Welche Mission hat das Unternehmen',
             answer:
               'z.B. Online-Psychotherapie für GKV-Versicherte mit großer Nachhaltigkeit',
           },
           {
+            question: 'Welches sind die Werte des Unternehmens?',
             answer:
-              'z.B. Online-Psychotherapie für GKV-Versicherte mit großer Nachhaltigkeit',
+              'z.B. Wertschätzung, Vielfalt, Toleranz, Teamgeist, Innovation, unternehmerisches Denken',
           },
           {
+            question: 'Wer sind relevante Teammitglieder?',
             answer:
-              'z.B. Online-Psychotherapie für GKV-Versicherte mit großer Nachhaltigkeit',
+              'z.B. Psychotherapeutin, Software-Entwicklerin, BWL-Experte, UX-Experte',
           },
           {
+            question: 'Welche Organisationsform besitzt die Plattform?',
             answer:
-              'z.B. Online-Psychotherapie für GKV-Versicherte mit großer Nachhaltigkeit',
+              'z.B. Optionen: GmbH, gGmbH, UG, AG, Genossenschaft, Verein, Sonstige',
+          },
+          {
+            question: 'Wo ist der Sitz der Unternehmung (Region, Land)?',
+            answer: 'z.B. Berlin, Deutschland',
+          },
+          {
+            question: 'Welches sind Referenzprojekte?',
+            answer: 'z.B. Projekt "AID" in Kooperation mit der Charité',
+          },
+          {
+            question:
+              'Welche Zertifizierungen, Qualitätsauszeichnungen besitzt das Unternehmen?',
+            answer: 'z.B. ISO 13485, ISO 27001 und "Top-Arbeitgeber',
+          },
+          {
+            question: 'Welche Bewertungen von Dritten gibt es?',
+            answer:
+              'z.B. Bewertung durch Stiftung-Warentest, "Digitale Begleiter bei Depression',
+          },
+          {
+            question:
+              'Ist das Unternehmen unabhängig von Dritten? Welches sind relevante Partner',
+            answer:
+              'z.B. finanzielle und fachliche Unabhängigkeit / Charité und HTW sind wissenschaftliche Partner',
           },
         ],
       },
       {
         category: 'Applikation',
-        question: 'In welcher Branche sind Sie tätig?',
-        answers: [
+        questions: [
           {
-            answer: 'Medizintechnik',
+            question: 'Identifikation / Registrierung',
+            answer: 'z.B. E-Mail, Password / 2-Faktor-Authentifizierung',
           },
           {
-            answer: 'Biotech',
+            question: 'Matching - Transparenz des Verfahrens ',
+            answer:
+              'z.B. Zuordnung Patient – Therapeut über standardisierten Fragebogen',
           },
           {
-            answer: 'Smart Home',
+            question: 'Transaktion – Überblick Nutzungsprozess',
+            answer:
+              'z.B. Visuelle Darstellung der Schritte des Online-Behandlungsprozesses',
           },
           {
-            answer: 'Pharma',
+            question: 'Nutzungs-/Kaufanreize / Preispolitik',
+            answer: 'z.B. Kostenübernahme durch GKV',
           },
           {
-            answer: 'Maschinenbau',
-          },
-          {
-            answer: 'Automobilbau',
-          },
-          {
-            answer: 'Sonstige Branche',
+            question: 'Interaktion / Kommunikation',
+            answer: 'z.B. Chat integriert in App',
           },
         ],
       },
       {
         category: 'Gesundheit / Therapie',
-        question: 'Welche Art von Kundenbeziehungen hat Ihr Geschäft?',
-        answers: [
+        questions: [
           {
-            answer: 'B2B (B2B2B)',
+            question: 'Etablierte Methode',
+            answer: 'z.B. Kognitive Verhaltenstherapie (KVT)',
           },
           {
-            answer: 'B2C (B2B2C)',
+            question: 'Wissenschaftliche Studien',
+            answer:
+              'z.B. Studie zur CBASP-Therapie in Kooperation mit der Charité',
           },
           {
-            answer: 'C2B (C2B2B)',
-          },
-          {
-            answer: 'C2C (C2B2C)',
+            question: 'Expertenmeinungen',
+            answer: 'z.B. Charité-Wissenschaftler, Patienten',
           },
         ],
       },
       {
         category: 'Daten',
-        question: 'Wo ist Ihr Geschäft tätig?',
-        answers: [
+        questions: [
           {
-            answer: 'National',
+            question: 'Inhalt / Beiträge',
+            answer:
+              'z.B. Überwachung der fachlichen Inhalte und Beiträgen von Betroffenen',
           },
           {
-            answer: 'Europa (EU, DACH)',
+            question: 'Datenschutz / Datensicherheit',
+            answer:
+              'z.B. DSGVO-Vorgaben werden erfüllt und Zertifizierung nach ISO 27001 existiert',
           },
           {
-            answer: 'USA, China',
+            question: 'Datenspeicher',
+            answer: 'z.B. Zertifizierte Online-Cloud-Speicher in der EU',
+          },
+          {
+            question: 'Transfer / Datenexport',
+            answer:
+              'z.B. Datenaustausch per SSL-Verschlüsselung. Export möglich',
+          },
+          {
+            question: 'Transparenz der Datennutzun',
+            answer:
+              'z.B. Datennutzung in anonymisierter Form für die Wissenschaft',
           },
         ],
       },
       {
         category: 'Infrastruktur',
-        question: 'Was für eine Plattformart betreiben Sie?',
-        answers: [
+        questions: [
           {
-            answer: 'Transaktions-zentriert',
+            question: 'Wo befindet sich der Daten-Server?',
+            answer: 'z.B. EU / Deutschland',
           },
           {
-            answer: 'Datenzentriert',
+            question:
+              'Welche Maßnahmen für die Sicherheit und dem Schutz vor Hacker-Attacken',
+            answer: 'z.B. Firewall',
           },
           {
-            answer: 'Innovations-zentriert',
+            question: 'Infrastruktur-Konnektivität / Standards',
+            answer: 'z.B. FHIR-Standard',
           },
         ],
       },

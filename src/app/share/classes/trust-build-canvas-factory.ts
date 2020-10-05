@@ -5,127 +5,127 @@ export class TrustBuildCanvasFactory {
     return {
       categories: [
         {
-          categoryTitle: 'Plattform-Betreiber',
+          category: 'Plattform-Betreiber',
           questions: [
             {
               question: 'Mission',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Werte',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Teammitglieder',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Organisationsform',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Sitz ',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Referenzprojekte',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Zertifizierungen, Qualitätsauszeichnungen',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Bewertungen von Dritten',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Partner',
-              answer: ''
+              answer: '',
             },
           ],
         },
         {
-          categoryTitle: 'Applikation',
+          category: 'Applikation',
           questions: [
             {
               question: 'Identifikation / Registrierung',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Matching - Transparenz des Verfahrens',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Transaktion – Überblick Nutzungsprozess',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Nutzungs-/Kaufanreize / Preispolitik',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Interaktion / Kommunikation',
-              answer: ''
+              answer: '',
             },
           ],
         },
         {
-          categoryTitle: 'Gesundheit / Therapie',
+          category: 'Gesundheit / Therapie',
           questions: [
             {
               question: 'Etablierte Methode',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Wissenschaftliche Studien',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Expertenmeinungen',
-              answer: ''
+              answer: '',
             },
           ],
         },
         {
-          categoryTitle: 'Daten',
+          category: 'Daten',
           questions: [
             {
               question: 'Inhalt / Beiträge',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Datenschutz / Datensicherheit',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Datenspeicher',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Transfer / Datenexport',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Transparenz der Datennutzung',
-              answer: ''
+              answer: '',
             },
           ],
         },
         {
-          categoryTitle: 'Infrastruktur',
+          category: 'Infrastruktur',
           questions: [
             {
               question: 'Ort des Daten-Server',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Sicherheit/Schutz vor Hacker-Attacken',
-              answer: ''
+              answer: '',
             },
             {
               question: 'Infrastruktur-Konnektivität / Standards',
-              answer: ''
+              answer: '',
             },
           ],
         },

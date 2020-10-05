@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ITrustBuildCanvas } from '../../share/interfaces/interfaces';
+import {
+  ITrustBuildCanvas,
+  ITrustBuildCategory,
+} from '../../share/interfaces/interfaces';
 import { TrustBuildCanvasFactory } from '../../share/classes/trust-build-canvas-factory';
+import { QuestionnaireFactory } from '../../share/classes/questionnaire-factory';
 
 @Component({
   selector: 'app-tust-build-canvas-view',
@@ -17,16 +21,48 @@ export class TustBuildCanvasViewComponent implements OnInit {
   };
 
   trustBuildCanvas: ITrustBuildCanvas;
+  questionaire: ITrustBuildCategory[];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.trustBuildCanvas = TrustBuildCanvasFactory.createTrustBuildCanvas();
-
-    console.log(JSON.stringify(history.state.updatedData, null, 2));
     if (history.state.updatedData !== undefined) {
-      this.dataSource = history.state.updatedData;
-      console.log('passed data ' + this.dataSource);
+      this.trustBuildCanvas = TrustBuildCanvasFactory.createTrustBuildCanvas();
+
+      for (let i = 0; i < this.trustBuildCanvas.categories.length; i++) {
+        console.log('category', this.trustBuildCanvas.categories[i].category);
+        for (
+          let j = 0;
+          j < this.trustBuildCanvas.categories[i].questions.length;
+          j++
+        ) {
+          this.trustBuildCanvas.categories[i].questions[j].answer =
+            history.state.updatedData[i].questions[j].answer;
+          console.log(
+            'answer',
+            this.trustBuildCanvas.categories[i].questions[j].answer
+          );
+        }
+      }
+      console.log(
+        'passed data ',
+        JSON.stringify(this.trustBuildCanvas, null, 2)
+      );
+    } else {
+      this.questionaire = QuestionnaireFactory.createBusinessQuestionnaire();
+      this.trustBuildCanvas = TrustBuildCanvasFactory.createTrustBuildCanvas();
+
+      for (let i = 0; i < this.trustBuildCanvas.categories.length; i++) {
+        for (
+          let j = 0;
+          j < this.trustBuildCanvas.categories[i].questions.length;
+          j++
+        ) {
+          this.trustBuildCanvas.categories[i].questions[
+            j
+          ].answer = this.questionaire[i].questions[j].answer;
+        }
+      }
     }
   }
 

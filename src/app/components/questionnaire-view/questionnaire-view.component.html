@@ -1,18 +1,18 @@
 <mat-vertical-stepper [linear]="true">
   <form [formGroup]="questionnaireForms">
-    <mat-step *ngFor="let question of questionnaire; index as i" [stepControl]="questionnaireForms">
-      <ng-template matStepLabel>{{question.category | uppercase}}</ng-template>
+    <mat-step *ngFor="let section of questionnaire; index as i" [stepControl]="questionnaireForms">
+      <ng-template matStepLabel>{{section.category | uppercase}}</ng-template>
       <mat-card>
-        <mat-card-title class="question-headline">{{question.question}}</mat-card-title>
         <mat-card-content>
-          <div *ngFor="let answer of question.answers">
-            <textarea type=" text" [value]="answer.answer"></textarea>
-          </div>
-          <!-- <mat-radio-group [formControlName]="question.category">
-            <div *ngFor="let answer of question.answers">
-              <mat-radio-button class="question-collection" [value]="answer.answer">{{answer.answer}}</mat-radio-button>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;grid-gap: 12px;">
+
+            <div *ngFor="let question of section.questions; index as j">
+              <mat-card style="width: 300px; height: 190px;">
+                <mat-card-subtitle class="question-headline">{{question.question}}</mat-card-subtitle>
+                <textarea style="height: 100px; width: 300px;" type=" text" [value]="question.answer"></textarea>
+              </mat-card>
             </div>
-          </mat-radio-group> -->
+          </div>
         </mat-card-content>
         <mat-card-actions class="button-collection">
           <button *ngIf="i > 0" mat-flat-button matStepperPrevious color="primary" class="back-button">

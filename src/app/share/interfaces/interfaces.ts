@@ -7,8 +7,8 @@ export interface ITrustBuildCanvas {
   categories: ITrustBuildCategory[];
 }
 
-interface ITrustBuildCategory {
-  categoryTitle: string;
+export interface ITrustBuildCategory {
+  category: string;
   questions: IQuestion[];
 }
 export interface IQuestion {
