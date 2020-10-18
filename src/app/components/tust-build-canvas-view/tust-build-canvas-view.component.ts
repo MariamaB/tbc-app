@@ -12,14 +12,6 @@ import { QuestionnaireFactory } from '../../share/classes/questionnaire-factory'
   styleUrls: ['./tust-build-canvas-view.component.css'],
 })
 export class TustBuildCanvasViewComponent implements OnInit {
-  public dataSource = {
-    business: '',
-    product: '',
-    relationship: '',
-    partner: '',
-    platform: '',
-  };
-
   trustBuildCanvas: ITrustBuildCanvas;
   questionaire: ITrustBuildCategory[];
 

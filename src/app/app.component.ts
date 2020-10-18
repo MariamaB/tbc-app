@@ -1,20 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { Subscription } from "rxjs";
-import { MediaObserver, MediaChange } from "@angular/flex-layout";
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = "Frontend";
+  title = 'Frontend';
   projects = true;
   innovation = true;
   pool = true;
   subCanvas = true;
 
-  headline = "Dashboard";
+  headline = 'TBC Self-Service';
 
   mediaSub: Subscription;
   deviceXs: boolean;
@@ -25,14 +25,14 @@ export class AppComponent {
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {
         console.log(result.mqAlias);
-        this.deviceXs = result.mqAlias === "xs" ? true : false;
+        this.deviceXs = result.mqAlias === 'xs' ? true : false;
       }
     );
   }
 
   public switchToTbc() {
     this.projects = !this.projects;
-    this.headline = "Plattform-Stakeholder";
+    // this.headline = 'Trust-Build-Canvas';
   }
 
   ngOnDestroy(): void {
