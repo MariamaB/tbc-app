@@ -1,6 +1,6 @@
 mat-drawer-container {
   height: 100%;
-  //   margin: 10px;
+  // margin-bottom: 20px;
 }
 
 mat-drawer {
@@ -32,7 +32,23 @@ mat-card {
   margin: 1%;
 }
 
-mat-selection-list {
+.grid-list {
   display: grid;
   grid-template-columns: auto auto;
+}
+#grid-list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  mat-selection-list mat-list-option:first-child {
+    font-weight: bold;
+  }
+}
+
+.list-7 {
+  display: grid;
+  grid-template-columns: 20% 20% 25% auto;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
 }

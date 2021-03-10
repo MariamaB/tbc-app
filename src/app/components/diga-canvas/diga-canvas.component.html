@@ -18,7 +18,7 @@
             <!-- <i class="material-icons-outlined icon-space">close</i> -->
             <mat-form-field appearance="fill">
               <mat-label>{{element}}</mat-label>
-              <textarea matInput></textarea>
+              <textarea class="textarea" matInput></textarea>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile style="background-color: rgb(205, 235, 245);">
@@ -59,15 +59,100 @@
 
     <mat-card>
       <mat-card-header>
+        <mat-card-title>4. Hauptfunktion</mat-card-title>
+        <mat-card-subtitle>Worin besteht die digitale Hauptfunktion der Anwendung?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-selection-list class="grid-list">
+          <mat-list-option *ngFor="let element of mainFunktion">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-form-field style="margin-top: 25px;" appearance="fill">
+          <mat-label>Welches ist die digitale Hauptfunktionalität?</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>5. DiGA-Anfoderung Hersteller</mat-card-title>
+        <mat-card-subtitle>Welche DiGA-Anforderung erfüllt der Hersteller?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-selection-list>
+          <mat-list-option labelPosition="after" *ngFor="let element of normRequirements">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-card-content>
+
+      <mat-card-header>
+        <mat-card-subtitle>5.1 Welche positiven Versorgungseffekte mit direktem Patietenbezug können nachgewiesen
+          werden?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content id="grid-list">
+        <mat-selection-list>
+          <mat-list-option *ngFor="let element of poducerRequirements[0]">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-selection-list>
+          <mat-list-option *ngFor="let element of poducerRequirements[1]">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-selection-list>
+          <mat-list-option *ngFor="let element of poducerRequirements[2]">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-card-content>
+
+      <mat-card-header>
+        <mat-card-subtitle>5.2 Wird eine Studie hierzu durchgeführt?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="grid-list">
+        <mat-form-field *ngFor="let element of studyParameters" appearance="fill">
+          <mat-label>{{element}}</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
         <mat-card-title>6. DiGA-Anforderungen digitale Anwendung</mat-card-title>
         <mat-card-subtitle>Welche DiGA-Anforderungen erfüllt die digitale Anwendung?</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-selection-list>
+        <mat-selection-list class="grid-list">
           <mat-list-option *ngFor="let element of appRequirements">
             {{element}}
           </mat-list-option>
         </mat-selection-list>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>7. Marktzugang</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list role="list" class="list-7">
+          <mat-list-item role="listitem">Zuzahlung:</mat-list-item>
+          <mat-list-item *ngFor="let element of ['nein','ja,  folgendes:']" role="listitem">
+            <mat-checkbox class="example-margin">
+              {{element}}
+            </mat-checkbox>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-form-field class="example-full-width">
+              <mat-label>Favorite food</mat-label>
+              <input matInput placeholder="Ex. Pizza" value="... €">
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </mat-drawer-content>
