@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { QuestionnaireComponent } from './components/questionnaire-view/questionnaire-view.component';
 import { TustBuildCanvasViewComponent } from './components/tust-build-canvas-view/tust-build-canvas-view.component';
+import { DigaCanvasComponent } from './components/diga-canvas/diga-canvas.component';
 
 const routes: Routes = [
   {
@@ -23,12 +24,12 @@ const routes: Routes = [
     path: 'trust-build-canvas',
     component: TustBuildCanvasViewComponent,
   },
+  {
+    path: 'diga-canvas',
+    component: DigaCanvasComponent,
+  },
   { path: '**', component: PageNotFoundComponent },
   // { path: 'hero/:id', component: HeroDetailComponent },
-  // {
-  //   path: "business-model-canvas",
-  //   component: BusinessModelCanvasComponent
-  // },
 ];
 
 @NgModule({
