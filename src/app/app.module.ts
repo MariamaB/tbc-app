@@ -12,7 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TustBuildCanvasViewComponent } from './components/tust-build-canvas-view/tust-build-canvas-view.component';
-
+import {
+  DialogOverview,
+  DigaCanvasComponent,
+} from './components/diga-canvas/diga-canvas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +23,8 @@ import { TustBuildCanvasViewComponent } from './components/tust-build-canvas-vie
     HomeComponent,
     QuestionnaireComponent,
     TustBuildCanvasViewComponent,
+    DigaCanvasComponent,
+    DialogOverview,
     // ErrorComponent
   ],
   imports: [
