@@ -14,8 +14,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import {MatSliderModule} from '@angular/material/slider';
-import {TextFieldModule} from '@angular/cdk/text-field';
+import { MatSliderModule } from '@angular/material/slider';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const material = [
   MatToolbarModule,
@@ -34,16 +35,12 @@ const material = [
   MatSelectModule,
   MatSliderModule,
   TextFieldModule,
+  MatGridListModule,
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    ...material
-  ],
-   exports: [
-     ...material
-   ]
+  imports: [CommonModule, ...material],
+  exports: [...material],
 })
-export class MaterialModule { }
+export class MaterialModule {}
