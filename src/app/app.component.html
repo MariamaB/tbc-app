@@ -6,7 +6,7 @@
       </button>
       <span class="center-headline">{{headline}}</span>
       <mat-menu #settings>
-        <button mat-menu-item>Settings</button>
+        <button (click)="saveAsPDF()" mat-menu-item>Settings</button>
         <button mat-menu-item>Help</button>
       </mat-menu>
       <button mat-icon-button [matMenuTriggerFor]="settings">
