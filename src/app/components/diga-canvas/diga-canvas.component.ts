@@ -17,6 +17,9 @@ export class DigaCanvasComponent implements OnInit {
   poducerRequirements: string[][];
   normRequirements: string[];
   studyParameters: string[];
+  marketAccess: any;
+  val: string = 'testLang';
+  languages = ['deutsch', 'englisch'];
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -90,6 +93,29 @@ export class DigaCanvasComponent implements OnInit {
     ];
     this.studyParameters = ['Ziel', 'Parameter', 'Methode', 'Datenquelle'];
 
+    this.marketAccess = {
+      sections: [
+        {
+          name: 'Zuzahlung',
+          inputFieled: { placeholder: '... €', input: '' },
+        },
+        {
+          name: 'Zusatzgeräte',
+          inputFieled: { placeholder: '...', input: '' },
+        },
+        {
+          name: 'Sprachen',
+          options: ['deutsch', 'englisch'],
+          inputFieled: { placeholder: 'Andere Sprache', input: '' },
+        },
+        {
+          name: 'Plattform',
+          options: ['iOS', 'Android', 'Web Applikation'],
+        },
+      ],
+      options: ['nein', 'ja, folgendes:'],
+    };
+
     // this.poducerRequirements = [
     // {
     //   name: 'Zuzahlung',
@@ -120,6 +146,11 @@ export class DigaCanvasComponent implements OnInit {
     // 'Kostenreduzierung -> keine DiGA',
     // ],
     // ];
+  }
+  public add(): void {
+    console.log('new Language');
+    console.log('new Language', this.val);
+    this.languages.push(this.val);
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverview, {

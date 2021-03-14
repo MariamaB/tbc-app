@@ -47,7 +47,17 @@ mat-card {
 
 .list-7 {
   display: grid;
-  grid-template-columns: 20% 20% 25% auto;
+  grid-template-columns: 25% 45% auto;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+}
+
+.list-72 {
+  display: grid;
+  // flex: 1;
+  // justify-content: space-between;
+  grid-template-columns: 25% 20% 20% 20%;
   mat-list-item:first-child {
     font-weight: bold;
   }
