@@ -13,6 +13,13 @@ export class DigaCanvasComponent implements OnInit {
   supportTypes: string[];
   usersegment: string[];
   appRequirements: string[];
+  mainFunktion: string[];
+  poducerRequirements: string[][];
+  normRequirements: string[];
+  studyParameters: string[];
+  marketAccess: any;
+  val: string = 'testLang';
+  languages = ['deutsch', 'englisch'];
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -25,6 +32,7 @@ export class DigaCanvasComponent implements OnInit {
       'Medizinische Zweckbestimmung',
       'Funktion',
       'Nutzersegment',
+      'Hauptfunktion',
       'DiGA-Anforderungen Hersteller',
       'DiGA-Anforderungen Anwendung',
       'Marktzugang',
@@ -50,6 +58,99 @@ export class DigaCanvasComponent implements OnInit {
       'Qualität der medizinischen Inhalte',
       'Patientensicherheit',
     ];
+    this.mainFunktion = [
+      'Die Hauptfunktion beruht auf digitalen Technologien?',
+      'Die digitale Hauptfnktionalität besteht im Auslesen oder Steueren eines Gerätes (keine DiGA)',
+    ];
+    this.normRequirements = [
+      'Fähigkeit, Konformität zu erklären (Medizinprodukt "zertifizieren"): z.B. Zertifizierung nach ISO13485',
+      'Erfüllung Datenschutzanforderungen und Datensicherheit: -> z.B. nach DSGVO und Sdtand der Technik',
+    ];
+    this.poducerRequirements = [
+      [
+        'a) Medizinischer Nutzen',
+        'Verbesserung des Gesundheitszustands',
+        'Verkürzung der Krankheitsdauer',
+        'Verlängerung des Überlebens',
+        'Verbesserung der Lenbensqualität',
+      ],
+      [
+        'b) Patientenrelevate Struktur- und Verfahrensverbesserungen',
+        'Koordination der Behandlungsabläufe',
+        'Ausrichtung der Behandlung an Leitlinien und Standards',
+        'Adhärenz',
+        'Erleichterung des Zustands zur Versorgung',
+        'Patientensicherheit',
+        'Gesundheitskompetenz, Patientensouveränität',
+        'Bewältigung krankheitsbedingter Schwierigkeiten im Alltag',
+        'Aufwandsreduzierung für Patienten, Angehörige',
+      ],
+      [
+        'c) Ökonomischer Nutzen',
+        'Arbeitsreduzierung',
+        'Kostenreduzierung -> keine DiGA',
+      ],
+    ];
+    this.studyParameters = ['Ziel', 'Parameter', 'Methode', 'Datenquelle'];
+
+    this.marketAccess = {
+      sections: [
+        {
+          name: 'Zuzahlung',
+          inputFieled: { placeholder: '... €', input: '' },
+        },
+        {
+          name: 'Zusatzgeräte',
+          inputFieled: { placeholder: '...', input: '' },
+        },
+        {
+          name: 'Sprachen',
+          options: ['deutsch', 'englisch'],
+          inputFieled: { placeholder: 'Andere Sprache', input: '' },
+        },
+        {
+          name: 'Plattform',
+          options: ['iOS', 'Android', 'Web Applikation'],
+        },
+      ],
+      options: ['nein', 'ja, folgendes:'],
+    };
+
+    // this.poducerRequirements = [
+    // {
+    //   name: 'Zuzahlung',
+    //   array:
+    // [
+
+    // 'a) Medizinischer Nutzen',
+    // 'Verbesserung des Gesundheitszustands',
+    // 'Verkürzung der Krankheitsdauer',
+    // 'Verlängerung des Überlebens',
+    // 'Verbesserung der Lenbensqualität',
+    // ],
+    // }
+    // [
+    // 'b) Patientenrelevate Struktur- und Verfahrensverbesserungen',
+    // 'Koordination der Behandlungsabläufe',
+    // 'Ausrichtung der Behandlung an Leitlinien und Standards',
+    // 'Adhärenz',
+    // 'Erleichterung des Zustands zur Versorgung',
+    // 'Patientensicherheit',
+    // 'Gesundheitskompetenz, Patientensouveränität',
+    // 'Bewältigung krankheitsbedingter Schwierigkeiten im Alltag',
+    // 'Aufwandsreduzierung für Patienten, Angehörige',
+    // ],
+    // [
+    // 'c) Ökonomischer Nutzen',
+    // 'Arbeitsreduzierung',
+    // 'Kostenreduzierung -> keine DiGA',
+    // ],
+    // ];
+  }
+  public add(): void {
+    console.log('new Language');
+    console.log('new Language', this.val);
+    this.languages.push(this.val);
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverview, {

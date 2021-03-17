@@ -1,14 +1,15 @@
 <mat-drawer-container>
   <mat-drawer mode="side" opened color="primary">
     <mat-nav-list>
-      <a *ngFor="let element of this.navList;" routerLink="/home" routerLinkActive="active" mat-list-item onselect="">
+      <a *ngFor="let element of this.navList; ; index as i" href="/diga-canvas#{{i + 1}}" routerLinkActive="active"
+        mat-list-item onselect="">
         {{element}}
       </a>
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
     <mat-card>
-      <mat-card-header>
+      <mat-card-header id="1">
         <mat-card-title>1. Medizinische Zweckbestimmung</mat-card-title>
         <mat-card-subtitle>Wie lautet die medizinische Zweckbestimmung?</mat-card-subtitle>
       </mat-card-header>
@@ -18,7 +19,7 @@
             <!-- <i class="material-icons-outlined icon-space">close</i> -->
             <mat-form-field appearance="fill">
               <mat-label>{{element}}</mat-label>
-              <textarea matInput></textarea>
+              <textarea class="textarea" matInput></textarea>
             </mat-form-field>
           </mat-grid-tile>
           <mat-grid-tile style="background-color: rgb(205, 235, 245);">
@@ -31,7 +32,7 @@
     </mat-card>
 
     <mat-card>
-      <mat-card-header>
+      <mat-card-header id="2">
         <mat-card-title>2. Funktionen</mat-card-title>
         <mat-card-subtitle>Was unterstützt die digitale Anwendung?</mat-card-subtitle>
       </mat-card-header>
@@ -44,7 +45,7 @@
       </mat-card-content>
     </mat-card>
     <mat-card>
-      <mat-card-header>
+      <mat-card-header id="3">
         <mat-card-title>3. Nutzersegment</mat-card-title>
         <mat-card-subtitle>Wer sind die Nutzer der digitale Anwendung?</mat-card-subtitle>
       </mat-card-header>
@@ -58,16 +59,123 @@
     </mat-card>
 
     <mat-card>
+      <mat-card-header id="4">
+        <mat-card-title>4. Hauptfunktion</mat-card-title>
+        <mat-card-subtitle>Worin besteht die digitale Hauptfunktion der Anwendung?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-selection-list class="grid-list">
+          <mat-list-option *ngFor="let element of mainFunktion">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-form-field style="margin-top: 25px;" appearance="fill">
+          <mat-label>Welches ist die digitale Hauptfunktionalität?</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header id="5">
+        <mat-card-title>5. DiGA-Anfoderung Hersteller</mat-card-title>
+        <mat-card-subtitle>Welche DiGA-Anforderung erfüllt der Hersteller?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-selection-list>
+          <mat-list-option labelPosition="after" *ngFor="let element of normRequirements">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-card-content>
+
       <mat-card-header>
+        <mat-card-subtitle>5.1 Welche positiven Versorgungseffekte mit direktem Patietenbezug können nachgewiesen
+          werden?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content id="grid-list">
+        <mat-selection-list>
+          <mat-list-option *ngFor="let element of poducerRequirements[0]">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-selection-list>
+          <mat-list-option *ngFor="let element of poducerRequirements[1]">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-selection-list>
+          <mat-list-option *ngFor="let element of poducerRequirements[2]">
+            {{element}}
+          </mat-list-option>
+        </mat-selection-list>
+      </mat-card-content>
+
+      <mat-card-header>
+        <mat-card-subtitle>5.2 Wird eine Studie hierzu durchgeführt?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="grid-list">
+        <mat-form-field *ngFor="let element of studyParameters" appearance="fill">
+          <mat-label>{{element}}</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header id="6">
         <mat-card-title>6. DiGA-Anforderungen digitale Anwendung</mat-card-title>
         <mat-card-subtitle>Welche DiGA-Anforderungen erfüllt die digitale Anwendung?</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-selection-list>
+        <mat-selection-list class="grid-list">
           <mat-list-option *ngFor="let element of appRequirements">
             {{element}}
           </mat-list-option>
         </mat-selection-list>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header id="7">
+        <mat-card-title>7. Marktzugang</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list role="list"
+          [ngClass]="(section.name === 'Sprachen' || section.name === 'Plattform') ? 'list-72': 'list-7'"
+          *ngFor="let section of marketAccess.sections">
+          <mat-list-item role="listitem">{{section.name}}:</mat-list-item>
+          <mat-list-item role="listitem" *ngIf="section.name != 'Sprachen' && section.name != 'Plattform'">
+            <mat-radio-group aria-label="Select an option"
+              style="display: flex; flex-direction: row; flex: 1; justify-content: space-between">
+              <mat-radio-button value="{{i}}" *ngFor="let option of marketAccess.options; index as i">
+                {{option}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-list-item>
+          <ng-container *ngIf="section.name === 'Sprachen' || section.name === 'Plattform'">
+            <mat-list-item *ngFor="let element of section.options" role=" listitem">
+              <mat-checkbox>
+                {{element}}
+              </mat-checkbox>
+            </mat-list-item>
+            <mat-list-item *ngIf="section.name === 'Sprachen'">
+              <mat-checkbox>
+                <mat-form-field>
+                  <input matInput [placeholder]="section.inputFieled.placeholder" [value]="section.inputFieled.input">
+                  <!-- <a (onclick)='this.add()'>
+                    <mat-icon color="primary" matSuffix>add</mat-icon>
+                  </a> -->
+                </mat-form-field>
+              </mat-checkbox>
+            </mat-list-item>
+          </ng-container>
+          <mat-list-item *ngIf="section.name != 'Sprachen' && section.name != 'Plattform'">
+            <mat-form-field>
+              <input matInput [placeholder]="section.inputFieled.placeholder" [value]="section.inputFieled.input">
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </mat-drawer-content>

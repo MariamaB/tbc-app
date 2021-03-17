@@ -1,6 +1,6 @@
 mat-drawer-container {
   height: 100%;
-  //   margin: 10px;
+  // margin-bottom: 20px;
 }
 
 mat-drawer {
@@ -32,7 +32,33 @@ mat-card {
   margin: 1%;
 }
 
-mat-selection-list {
+.grid-list {
   display: grid;
   grid-template-columns: auto auto;
+}
+#grid-list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  mat-selection-list mat-list-option:first-child {
+    font-weight: bold;
+  }
+}
+
+.list-7 {
+  display: grid;
+  grid-template-columns: 25% 45% auto;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+}
+
+.list-72 {
+  display: grid;
+  // flex: 1;
+  // justify-content: space-between;
+  grid-template-columns: 25% 20% 20% 20%;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
 }
