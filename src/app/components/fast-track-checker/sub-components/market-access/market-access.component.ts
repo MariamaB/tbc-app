@@ -9,6 +9,10 @@ export class MarketAccessComponent implements OnInit {
   marketAccess = {
     sections: [
       {
+        name: 'Plattform',
+        options: ['iOS', 'Android', 'Web Applikation'],
+      },
+      {
         name: 'Zuzahlung',
         inputFieled: { placeholder: '... €', input: '' },
       },
@@ -17,13 +21,17 @@ export class MarketAccessComponent implements OnInit {
         inputFieled: { placeholder: '...', input: '' },
       },
       {
+        name: 'ICD-10-Code',
+        inputFieled: { placeholder: '...', input: '' },
+      },
+      {
         name: 'Sprachen',
         options: ['deutsch', 'englisch'],
         inputFieled: { placeholder: 'Andere Sprache', input: '' },
       },
       {
-        name: 'Plattform',
-        options: ['iOS', 'Android', 'Web Applikation'],
+        name: 'erste Verschreibung durch',
+        inputFieled: { placeholder: '...', input: '' },
       },
     ],
     options: ['nein', 'ja, folgendes:'],

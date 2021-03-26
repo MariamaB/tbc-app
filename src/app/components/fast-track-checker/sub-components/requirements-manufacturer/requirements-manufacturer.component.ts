@@ -8,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class RequirementsManufacturerComponent implements OnInit {
   poducerRequirements = [
     [
-      'a) Medizinischer Nutzen',
+      // 'a) Medizinischer Nutzen',
       'Verbesserung des Gesundheitszustands',
       'Verkürzung der Krankheitsdauer',
       'Verlängerung des Überlebens',
       'Verbesserung der Lenbensqualität',
     ],
     [
-      'b) Patientenrelevate Struktur- und Verfahrensverbesserungen',
+      // 'b) Patientenrelevate Struktur- und Verfahrensverbesserungen',
       'Koordination der Behandlungsabläufe',
       'Ausrichtung der Behandlung an Leitlinien und Standards',
       'Adhärenz',
@@ -26,7 +26,7 @@ export class RequirementsManufacturerComponent implements OnInit {
       'Aufwandsreduzierung für Patienten, Angehörige',
     ],
     [
-      'c) Ökonomischer Nutzen',
+      // 'c) Ökonomischer Nutzen',
       'Arbeitsreduzierung',
       'Kostenreduzierung -> keine DiGA',
     ],

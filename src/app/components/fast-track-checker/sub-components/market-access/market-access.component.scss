@@ -6,12 +6,16 @@
     font-weight: bold;
   }
 }
-
+.list-grid-2 {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+}
 .list-72 {
   display: grid;
-  // flex: 1;
-  // justify-content: space-between;
-  grid-template-columns: 25% 20% 20% 20%;
+  grid-template-columns: 25% 20% 20% auto;
   mat-list-item:first-child {
     font-weight: bold;
   }
@@ -20,4 +24,8 @@
 
 mat-card {
   margin: 1%;
+}
+
+mat-form-field {
+  width: 100%;
 }

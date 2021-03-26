@@ -68,6 +68,7 @@ textarea {
 
 .mat-form-field {
   margin-top: 16px;
+  width: 352px;
 }
 
 #canvas-container {
@@ -91,7 +92,6 @@ textarea {
 #canvas-header mat-card {
   display: flex;
   flex-direction: column;
-
   margin: 0.25%;
   p {
     font-size: xx-small;
@@ -109,10 +109,78 @@ textarea {
   flex: 2;
 }
 
-#canvas-1-list {
+.canvas-grid-list {
   display: grid;
+  padding-right: 2%;
+  padding-bottom: 2%;
   grid-template-columns: auto auto;
+  grid-row-gap: 60px;
   .mat-list-item ~ .mat-list-item {
     margin-bottom: 20px;
+  }
+}
+  #canvas-grid-list-simple {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    .mat-list-item ~ .mat-list-item {
+      margin-bottom: 15px;
+    }
+}
+
+
+
+.grid-list {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 30px;
+}
+
+
+#grid-list {
+  display: grid;
+  grid-template-columns: auto auto;
+  // mat-selection-list mat-list-option:first-child {
+  //   font-weight: bold;
+  // }
+}
+mat-selection-list {
+  display: grid; 
+  grid-template-columns: auto;
+}
+
+
+
+
+
+.list-7 {
+  display: grid;
+  grid-template-columns: 25% 45% auto;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+.list-grid-2 {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+.list-72 {
+  display: grid;
+  grid-template-columns: 25% 20% 20% 20%;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+  mat-form-field {
+    width: 100%;
   }
 }
