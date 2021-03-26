@@ -1,0 +1,187 @@
+<button mat-raised-button (click)="questionnaire = !questionnaire" id="toggle-linear">
+  {{!questionnaire ? 'switch to questionnaire' : 'switch to canvas'}}
+</button>
+<ng-container id="questionnaire" *ngIf="this.questionnaire">
+  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button>
+  <mat-vertical-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Medizinische Zweckbestimmung</ng-template>
+        <app-medical-intended-use></app-medical-intended-use>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Funktion</ng-template>
+        <app-functions></app-functions>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Nutzersegment</ng-template>
+        <app-user-segment></app-user-segment>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>DiGA-Anforderungen Hersteller</ng-template>
+        <app-requirements-manufacturer></app-requirements-manufacturer>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>DiGA-Anforderungen Anwendung</ng-template>
+        <app-requirements-application></app-requirements-application>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Marktzugang</ng-template>
+      <app-market-access></app-market-access>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</ng-container>
+
+<div id="canvas-container" *ngIf="!this.questionnaire">
+  <div id="canvas-header">
+    <mat-card style="flex: 5;">
+      <p><strong>Bezeichnung der potentiellen Digitalen Gesundheitsanwendung DiGA:</strong></p>
+      <p>Hier kommt die Bezeichnung</p>
+    </mat-card>
+    <mat-card style="flex: 4;">
+      <p><strong>Medizinprodukt-Risikoklasse (nach MDR):</strong></p>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button disabled="true" value="1">Kl. I</mat-radio-button>
+        <mat-radio-button [checked]="true" value="2">Kl. IIa</mat-radio-button>
+        <mat-radio-button disabled="true" value="3"> andere (keine DiGA)</mat-radio-button>
+      </mat-radio-group>
+      <!-- <p>Kl. I</p> -->
+    </mat-card>
+    <mat-card style="flex: 1;">
+      <p><strong>Erstellt von:</strong></p>
+      <p>Name</p>
+    </mat-card>
+    <mat-card style="flex: 1;">
+      <p><strong>Datum:</strong></p>
+      <p>01.01.2021</p>
+    </mat-card>
+    <mat-card style="flex: 1;">
+      <p><strong>Version:</strong></p>
+      <p>0.0.0</p>
+    </mat-card>
+  </div>
+  <div id="canvas-content">
+    <div id="left">
+      <div>
+        <p><strong>1. Medizinische Zweckbestimmung</strong></p>
+        <mat-card>
+          <mat-list id="canvas-1-list" role="list">
+            <mat-list-item role="listitem">
+              <div>
+                <p><strong>Indikation</strong></p>
+                <p>Hier kommt die Bezeichnung</p>
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <div>
+                <p><strong>Kontraindikation</strong></p>
+                <p>Hier kommt die Bezeichnung</p>
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+              <div>
+                <p><strong>Patentengruppen</strong></p>
+                <p>Hier kommt die Bezeichnung</p>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+
+      <mat-card>
+        <mat-list id="canvas-1-list" role="list">
+          <mat-list-item role="listitem">
+            <div>
+              <p><strong>2. Was unterstutzt die digitale Anwendung?</strong></p>
+              <mat-checkbox>
+                Erkennung,Behandlung, Linderung oder Kompensierung von Verletzungen oder Behinderungen
+              </mat-checkbox>
+            </div>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <div>
+              <p><strong>3. Wer sind die Nutzer der digitalen Anwendung</strong></p>
+              <mat-checkbox>
+                Patienten und Ärzte/Therapeuten gemeinsam
+              </mat-checkbox>
+            </div>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <div>
+              <p><strong>4. Worin besteht die Hauptfunktionalität der Anwendung?</strong></p>
+              <mat-checkbox>
+                Hier kommt die Bezeichnung
+              </mat-checkbox>
+              <mat-checkbox>
+                Hier kommt die Bezeichnung
+              </mat-checkbox>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+    <div id="right">
+      <div>
+        <p><strong>7. Welche sind die nächsten Schritte des Herstellers?</strong></p>
+        <mat-card>
+          <mat-list *ngFor="let element of data">
+            <mat-list-item role="listitem">
+              <mat-checkbox>
+                {{element}}
+              </mat-checkbox>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+      <div>
+        <p><strong>8. Gebühren und Auslagen für Hersteller (Auszug):</strong></p>
+        <mat-card>
+          <mat-list *ngFor="let element of data2">
+            <mat-list-item role="listitem" style="display: flex; flex: 1;">
+              {{element}}
+              <mat-form-field style="flex: 3;">
+                <input matInput placeholder="... €" value="... €">
+              </mat-form-field>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- <app-tust-build-canvas-view></app-tust-build-canvas-view> -->
+</div>

@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header id="6">
+    <mat-card-title>6. DiGA-Anforderungen digitale Anwendung</mat-card-title>
+    <mat-card-subtitle>Welche DiGA-Anforderungen erfüllt die digitale Anwendung?</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-selection-list class="grid-list">
+      <mat-list-option *ngFor="let element of appRequirements">
+        {{element}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+</mat-card>

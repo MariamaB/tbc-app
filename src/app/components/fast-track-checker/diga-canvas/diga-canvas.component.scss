@@ -10,6 +10,8 @@ mat-drawer {
 mat-drawer-content {
   padding: 2%;
 }
+
+//////////////////////
 mat-form-field {
   width: 70%;
   height: auto;
@@ -24,18 +26,15 @@ textarea {
   background-color: rgb(248, 253, 255);
 }
 
-mat-radio-group {
+#questionnaire mat-radio-group {
   display: grid;
-}
-
-mat-card {
-  margin: 1%;
 }
 
 .grid-list {
   display: grid;
   grid-template-columns: auto auto;
 }
+
 #grid-list {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -60,5 +59,60 @@ mat-card {
   grid-template-columns: 25% 20% 20% 20%;
   mat-list-item:first-child {
     font-weight: bold;
+  }
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+#canvas-container {
+  mat-card {
+    border: 2px rgb(70, 70, 153) ridge;
+    margin: 0.5%;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 5px;
+  }
+}
+
+#canvas-container > div {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+}
+
+#canvas-header mat-card {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0.25%;
+  p {
+    font-size: xx-small;
+  }
+}
+
+#left {
+  flex: 2;
+  > div {
+    margin: 1%;
+  }
+}
+
+#right {
+  flex: 2;
+}
+
+#canvas-1-list {
+  display: grid;
+  grid-template-columns: auto auto;
+  .mat-list-item ~ .mat-list-item {
+    margin-bottom: 20px;
   }
 }
