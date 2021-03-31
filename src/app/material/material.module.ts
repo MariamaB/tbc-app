@@ -17,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 const material = [
   MatToolbarModule,
   MatIconModule,
@@ -36,6 +36,7 @@ const material = [
   MatSliderModule,
   TextFieldModule,
   MatGridListModule,
+  MatCheckboxModule,
 ];
 
 @NgModule({

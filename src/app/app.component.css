@@ -13,3 +13,7 @@
 .sub-sub-menu {
   margin-left: 30%;
 }
+
+mat-drawer {
+  width: 18%;
+}

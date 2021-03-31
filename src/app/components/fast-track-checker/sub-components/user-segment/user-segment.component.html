@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header id="3">
+    <mat-card-title>3. Nutzersegment</mat-card-title>
+    <mat-card-subtitle>Wer sind die Nutzer der digitale Anwendung?</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="{{i}}" *ngFor="let element of usersegment; index as i">
+        {{element}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </mat-card-content>
+</mat-card>

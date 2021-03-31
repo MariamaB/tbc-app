@@ -2,55 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-diga-canvas',
-  templateUrl: './diga-canvas.component.html',
-  styleUrls: ['./diga-canvas.component.scss'],
+  selector: 'app-medical-intended-use',
+  templateUrl: './medical-intended-use.component.html',
+  styleUrls: ['./medical-intended-use.component.scss'],
 })
-export class DigaCanvasComponent implements OnInit {
-  public zweckbestimmung = [];
-  public navList = [];
-  name: string;
-  supportTypes: string[];
-  usersegment: string[];
-  appRequirements: string[];
+export class MedicalIntendedUseComponent implements OnInit {
+  zweckbestimmung = ['Indikation', 'Kontraindikation', 'Patentengruppen'];
+  name: any;
+  input = 'test';
+
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit() {
-    this.zweckbestimmung = [
-      'Indikation',
-      'Kontraindikation',
-      'Patentengruppen',
-    ];
-    this.navList = [
-      'Medizinische Zweckbestimmung',
-      'Funktion',
-      'Nutzersegment',
-      'DiGA-Anforderungen Hersteller',
-      'DiGA-Anforderungen Anwendung',
-      'Marktzugang',
-    ];
-    this.supportTypes = [
-      'Erkennung, Überwachung,Behandlung oder Linderung von Krankheiten',
-      'Erkennung, Behandlung, Linderung oder Kompensierung von Verletzungen oder Behinderung',
-      'Dient Primärprävention',
-    ];
-    this.usersegment = [
-      'Patienten',
-      'Patienten und Ärzte/Therapeuten gemeinsam',
-      'Nur Leistngserbringer, z.B. Praxisausstattung (keine DiGA)',
-    ];
-    this.appRequirements = [
-      'Sicherheit und Funktionstauglichkeit',
-      'Datenschutz und Datensicherheit',
-      'Qualität und Interoperabilität',
-      'Robustheit',
-      'Verbraucherschutz',
-      'Nutzerfreundlichkeit',
-      'Unterstützung und Leistungserbringer',
-      'Qualität der medizinischen Inhalte',
-      'Patientensicherheit',
-    ];
-  }
+  ngOnInit() {}
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverview, {
       width: '250px',
@@ -88,6 +52,7 @@ export interface DialogData {
       </button>
     </div>`,
 })
+
 // tslint:disable-next-line:component-class-suffix
 export class DialogOverview {
   constructor(

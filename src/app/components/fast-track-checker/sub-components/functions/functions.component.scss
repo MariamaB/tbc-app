@@ -1,0 +1,19 @@
+mat-radio-group {
+  display: grid;
+}
+
+mat-card {
+  margin: 1%;
+}
+
+.grid-list {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+mat-form-field {
+  width: 70%;
+  height: auto;
+}
+textarea {
+  height: 100px;
+}

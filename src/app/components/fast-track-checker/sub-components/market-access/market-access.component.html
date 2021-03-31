@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header id="7">
+    <mat-card-title>7. Marktzugang</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list"
+      [ngClass]="(section.name === 'Sprachen' || section.name === 'Plattform') ? 'list-72': (section.name === 'Zuzahlung' || section.name === 'Zusatzgeräte') ? 'list-7' : 'list-grid-2'"
+      *ngFor="let section of marketAccess.sections">
+      <mat-list-item role="listitem">{{section.name}}:</mat-list-item>
+      <mat-list-item role="listitem" *ngIf="section.name === 'Zuzahlung' || section.name === 'Zusatzgeräte'">
+        <mat-radio-group aria-label="Select an option"
+          style="display: flex; flex-direction: row; flex: 1; justify-content: space-between">
+          <mat-radio-button value="{{i}}" *ngFor="let option of marketAccess.options; index as i">
+            {{option}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-list-item>
+      <ng-container *ngIf="section.name === 'Sprachen' || section.name === 'Plattform'">
+        <mat-list-item *ngFor="let element of section.options" role=" listitem">
+          <mat-checkbox>
+            {{element}}
+          </mat-checkbox>
+        </mat-list-item>
+        <mat-list-item *ngIf="section.name === 'Sprachen'">
+          <mat-checkbox>
+            <mat-form-field>
+              <input matInput [placeholder]="section.inputFieled.placeholder" [value]="section.inputFieled.input">
+              <!-- <a (onclick)='this.add()'>
+                    <mat-icon color="primary" matSuffix>add</mat-icon>
+                  </a> -->
+            </mat-form-field>
+          </mat-checkbox>
+        </mat-list-item>
+      </ng-container>
+      <mat-list-item *ngIf="section.name != 'Sprachen' && section.name != 'Plattform'">
+        <mat-form-field>
+          <input matInput [placeholder]="section.inputFieled.placeholder" [value]="section.inputFieled.input">
+        </mat-form-field>
+      </mat-list-item>
+    </mat-list>   
+  </mat-card-content>
+</mat-card>

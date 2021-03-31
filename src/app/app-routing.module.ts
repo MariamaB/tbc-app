@@ -4,7 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { QuestionnaireComponent } from './components/questionnaire-view/questionnaire-view.component';
 import { TustBuildCanvasViewComponent } from './components/tust-build-canvas-view/tust-build-canvas-view.component';
-import { DigaCanvasComponent } from './components/diga-canvas/diga-canvas.component';
+import { DigaCanvasComponent } from './components/fast-track-checker/diga-canvas/diga-canvas.component';
 
 const routes: Routes = [
   {

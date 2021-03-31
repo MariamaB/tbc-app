@@ -1,0 +1,31 @@
+
+.list-7 {
+  display: grid;
+  grid-template-columns: 25% 45% auto;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+}
+.list-grid-2 {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+}
+.list-72 {
+  display: grid;
+  grid-template-columns: 25% 20% 20% auto;
+  mat-list-item:first-child {
+    font-weight: bold;
+  }
+
+}
+
+mat-card {
+  margin: 1%;
+}
+
+mat-form-field {
+  width: 100%;
+}
