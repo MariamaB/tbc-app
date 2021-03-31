@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
-import * as puppeteer from 'puppeteer';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-root',
@@ -37,20 +37,27 @@ export class AppComponent {
   }
 
   public createPDF() {
-    (async () => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.goto('http://localhost:4200/home');
-      await page.emulateMediaType('screen');
-      await page.pdf({
-        path: 'canvas.pdf',
-        format: 'a4',
-        landscape: true,
-        printBackground: true,
-      });
+    console.log('Save as PDF...');
+    // const doc = new jsPDF({
+    //   orientation: 'landscape',
+    //   unit: 'in',
+    //   format: [4, 2],
+    //   // format: 'a4',
+    // });
 
-      await browser.close();
-    })();
+    // (async () => {
+    //   const browser = await puppeteer.launch();
+    //   const page = await browser.newPage();
+    //   await page.goto('http://localhost:4200/home');
+    //   await page.emulateMediaType('screen');
+    //   await page.pdf({
+    //     path: 'canvas.pdf',
+    //     format: 'a4',
+    //     landscape: true,
+    //     printBackground: true,
+    //   });
+    //   await browser.close();
+    // })();
   }
   ngOnDestroy(): void {
     this.mediaSub.unsubscribe();
