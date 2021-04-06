@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
-import * as jsPDF from 'jspdf';
+import jspdf from 'jspdf';
+// import { element } from 'protractor';
+import * as html2canvasWrong from 'html2canvas';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,11 @@ import * as jsPDF from 'jspdf';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  @ViewChild('content') content: ElementRef;
+  html2canvas = (html2canvasWrong as any) as (
+    element: HTMLElement,
+    options?: Partial<html2canvasWrong.Options>
+  ) => Promise<HTMLCanvasElement>;
   title = 'Frontend';
   projects = true;
   innovation = true;
@@ -37,8 +44,24 @@ export class AppComponent {
   }
 
   public createPDF() {
-    console.log('Save as PDF...');
-    // const doc = new jsPDF({
+    console.log('Save as PDF...', window.innerWidth + '/' + window.innerHeight);
+    const element = document.getElementById('main-content');
+
+    this.html2canvas(element).then((canvas) => {
+      console.log('Save as PDF...', canvas);
+      const imgData = canvas.toDataURL('image/png');
+
+      const doc = new jspdf('l', 'mm', 'a3');
+      doc.addImage(
+        imgData,
+        0,
+        0,
+        window.innerWidth,
+        (canvas.height * window.innerWidth) / window.innerWidth
+      );
+      doc.save('canvas');
+    });
+    // const doc = new jspdf({
     //   orientation: 'landscape',
     //   unit: 'in',
     //   format: [4, 2],
