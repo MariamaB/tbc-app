@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
-import jspdf from 'jspdf';
+import { jsPDF } from 'jspdf';
 // import { element } from 'protractor';
 import * as html2canvasWrong from 'html2canvas';
 
@@ -47,19 +47,24 @@ export class AppComponent {
     console.log('Save as PDF...', window.innerWidth + '/' + window.innerHeight);
     const element = document.getElementById('main-content');
 
+    const doc = new jsPDF('landscape', 'px', 'a4');
+    doc.html(element, {
+      callback: function (pdf) {
+        pdf.save();
+      },
+      // x: 10,
+      // y: 10,
+    });
     this.html2canvas(element).then((canvas) => {
-      console.log('Save as PDF...', canvas);
-      const imgData = canvas.toDataURL('image/png');
-
-      const doc = new jspdf('l', 'mm', 'a3');
-      doc.addImage(
-        imgData,
-        0,
-        0,
-        window.innerWidth,
-        (canvas.height * window.innerWidth) / window.innerWidth
-      );
-      doc.save('canvas');
+      // const imgData = canvas.toDataURL('image/png');
+      // doc.addImage(
+      //   imgData,
+      //   0,
+      //   0,
+      //   window.innerWidth,
+      //   (canvas.height * window.innerWidth) / window.innerWidth
+      // );
+      // doc.save('canvas');
     });
     // const doc = new jspdf({
     //   orientation: 'landscape',

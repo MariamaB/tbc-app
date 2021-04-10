@@ -93,6 +93,47 @@
       <p>0.0.0</p>
     </mat-card>
   </div>
+  <ng-container>
+    <mat-card>
+      <mat-list class="canvas-grid-list" role="list">
+        <mat-list-item role="listitem">
+          <div>
+            <p><strong>2. Was unterstutzt die digitale Anwendung?</strong></p>
+            <mat-checkbox>
+              Erkennung,Behandlung, Linderung oder Kompensierung von Verletzungen oder Behinderungen
+            </mat-checkbox>
+          </div>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <div>
+            <p><strong>3. Wer sind die Nutzer der digitalen Anwendung</strong></p>
+            <mat-checkbox>
+              Patienten und Ärzte/Therapeuten gemeinsam
+            </mat-checkbox>
+          </div>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <div>
+            <p><strong>4. Worin besteht die Hauptfunktionalität der Anwendung?</strong></p>
+            <p>Die Hauptfunktion beruht auf digitalen Technologien?</p>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button value="1">ja</mat-radio-button>
+              <mat-radio-button value="2">nein (keine DiGA)</mat-radio-button>
+            </mat-radio-group>
+            <mat-checkbox>
+              Die digitale Hauptfunktionalität besteht im Auslesen oder Steuern eines Gerätes (keine DiGA)
+            </mat-checkbox>
+          </div>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <div>
+            <p><strong>Welches ist die digitale Hauptfunktionalität?</strong></p>
+            <p>Die Hauptfunktion beruht auf digitalen Technologien</p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </ng-container>
   <div id="canvas-content">
     <div id="left">
       <ng-container>
@@ -121,45 +162,6 @@
         </mat-card>
       </ng-container>
 
-      <mat-card>
-        <mat-list class="canvas-grid-list" role="list">
-          <mat-list-item role="listitem">
-            <div>
-              <p><strong>2. Was unterstutzt die digitale Anwendung?</strong></p>
-              <mat-checkbox>
-                Erkennung,Behandlung, Linderung oder Kompensierung von Verletzungen oder Behinderungen
-              </mat-checkbox>
-            </div>
-          </mat-list-item>
-          <mat-list-item role="listitem">
-            <div>
-              <p><strong>3. Wer sind die Nutzer der digitalen Anwendung</strong></p>
-              <mat-checkbox>
-                Patienten und Ärzte/Therapeuten gemeinsam
-              </mat-checkbox>
-            </div>
-          </mat-list-item>
-          <mat-list-item role="listitem">
-            <div>
-              <p><strong>4. Worin besteht die Hauptfunktionalität der Anwendung?</strong></p>
-              <p>Die Hauptfunktion beruht auf digitalen Technologien?</p>
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">ja</mat-radio-button>
-                <mat-radio-button value="2">nein (keine DiGA)</mat-radio-button>
-              </mat-radio-group>
-              <mat-checkbox>
-                Die digitale Hauptfunktionalität besteht im Auslesen oder Steuern eines Gerätes (keine DiGA)
-              </mat-checkbox>
-            </div>
-          </mat-list-item>
-          <mat-list-item role="listitem">
-            <mat-form-field appearance="fill">
-              <mat-label>Welches ist die digitale Hauptfunktionalität?</mat-label>
-              <textarea matInput></textarea>
-            </mat-form-field>
-          </mat-list-item>
-        </mat-list>
-      </mat-card>
 
       <p><strong>5. DiGA-Anforderung Hersteller</strong></p>
       <mat-card>
@@ -240,16 +242,16 @@
           <mat-list>
             <ng-container *ngFor="let element of data2">
               <span></span>
-              <mat-list-item  role="listitem">
-                <div style="display: flex; flex: 1;">
-                  <div style="flex: 3;">
-                    {{element.split('_')[0]}} <br>
-                    {{element.split('_')[1]}} 
-                  </div>
-                    <mat-form-field style="flex: 1;">
-                      <input matInput placeholder="... €" value="">
-                    </mat-form-field>
-                  </div>
+              <mat-list-item role="listitem" style="display: flex; flex: 1;">
+                <div style="flex: 2;">
+                  {{element.split('_')[0]}}<br>
+                  {{element.split('_')[1]}}
+                </div>
+                <div style="flex: 2;">
+                  <mat-form-field>
+                    <input matInput placeholder="... €" value="">
+                  </mat-form-field>
+                </div>
               </mat-list-item>
             </ng-container>
           </mat-list>

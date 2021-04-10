@@ -17,3 +17,7 @@
 mat-drawer {
   width: 18%;
 }
+
+#main-content {
+  padding: 1%;
+}
