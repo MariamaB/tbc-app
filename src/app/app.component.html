@@ -8,6 +8,7 @@
       <mat-menu #settings>
         <button mat-menu-item>Settings</button>
         <button mat-menu-item>Help</button>
+        <button mat-menu-item (click)="this.createPDF()">Save as PDF</button>
       </mat-menu>
       <button mat-icon-button [matMenuTriggerFor]="settings">
         <mat-icon>more_vert</mat-icon>
@@ -46,7 +47,7 @@
 
       </mat-nav-list>
     </mat-drawer>
-    <mat-drawer-content fxFlexFill>
+    <mat-drawer-content id="main-content" fxFlexFill>
       <router-outlet></router-outlet>
     </mat-drawer-content>
   </mat-drawer-container>

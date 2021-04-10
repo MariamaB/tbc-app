@@ -72,7 +72,6 @@ export class DigaCanvasComponent implements OnInit, AfterViewInit {
       'Sonstige Gebühren im Kontext einer DiGA',
     ];
 
-
     this.poducerRequirements = [
       [
         'a) Medizinischer Nutzen',
@@ -109,12 +108,12 @@ export class DigaCanvasComponent implements OnInit, AfterViewInit {
       'Qualität der medizinischen Inhalte',
       'Patientensicherheit',
     ];
-  
+
     this.normRequirements = [
       'Fähigkeit, Konformität zu erklären (Medizinprodukt "zertifizieren"): z.B. Zertifizierung nach ISO13485',
       'Erfüllung Datenschutzanforderungen und Datensicherheit: -> z.B. nach DSGVO und Sdtand der Technik',
     ];
-  
+
     this.studyParameters = ['Ziel', 'Parameter', 'Methode', 'Datenquelle'];
     this.marketAccess = {
       sections: [

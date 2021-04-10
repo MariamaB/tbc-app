@@ -1,0 +1,13 @@
+
+Allgemeine Anmerkungen:
+
+* Diese ZIP-Datei enthält 5 Dateien: „bibba.bib“, „Mustermann_Bachelorarbeit_Innenteil.tex“, „Pakete.tex“, „Titelseite.tex“ und „UniGoettingen.pdf“
+* Damit die Hauptdatei „Mustermann_Bachelorarbeit_Innenteil.tex“ fehlerfrei kompiliert, muss innerhalb der Datei „Titelseite.tex“ der eigene Pfad zum Uni-Logo („UniGoettingen.pdf“) 
+bei „\includegraphics[width=0.8\textwidth]{/Users/Mustermann/Desktop/TEX-Vorlage/Vorlage/UniGoettingen.pdf}“ eigefügt werden (Mac-Nutzer können den Pfad zur Datei wie folgt bekommen: 
+Auf die Datei „UniGoettingen.pdf“ klicken, dann auf die Menüleiste -> Hilfe -> den Suchstring „als Pfadname kopieren“ eingeben und auf "„UniGoettingen.pdf“ als Pfadname kopieren" klicken). 
+Danach muss die Datei „Titelseite.tex“ gespeichert werden und die Hauptdatei kompiliert werden.
+* Falls einige Sachen in der Hauptdatei nicht richtig angezeigt (das Inhaltsverzeichnis, oder das Literaturverzeichnis nicht geladen werden o. Ä.) -> die temporären Dateien, die bei jedem 
+Kompiliervorgang erzeugt werden löschen und noch einmal kompilieren. Falls weitere Probleme auftreten, versuchen mit 6 (PDFLaTeX) - F11 (BibTeX) - F6 (PDFLaTeX) - F6 (PDFLaTeX) und dann F1 (schnelles Übersetzen) 
+(Reihenfolge beachten) zu kompilieren.
+
+* Weitere Anmerkungen und Hilfestellungen als Anmerkungen in der Hauptdatei

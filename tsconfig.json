@@ -1,6 +1,5 @@
 {
   "compileOnSave": false,
-
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist",
@@ -9,6 +8,7 @@
     "declaration": false,
     "module": "commonjs",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es6",
@@ -21,5 +21,8 @@
       "esnext.asynciterable"
     ]
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    "node_modules/@types/puppeteer/index.d.ts"
+  ]
 }
