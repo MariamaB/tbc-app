@@ -20,6 +20,14 @@ mat-form-field {
 textarea {
   height: 100px;
 }
+
+#mat-form-field {
+  width: 80%;
+  height: auto;
+  textarea {
+    height: 50px;
+  }
+}
 .tiles {
   // border: 1px solid #555;
   // background-color: rgb(248, 245, 245);
@@ -33,7 +41,7 @@ textarea {
 
 .grid-list {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto auto;
 }
 
 #grid-list {
@@ -73,13 +81,19 @@ textarea {
 }
 
 #canvas-container {
+  justify-content: center;
   display: grid;
-  grid-template-rows: auto auto 99%;
+  grid-template-rows: auto auto auto;
   mat-card {
     border: 2px rgb(70, 70, 153) ridge;
     margin: 0.5%;
   }
 
+  width: 60%;
+  height: 60%;
+}
+
+#margin-radio-button {
   .mat-radio-button ~ .mat-radio-button {
     margin-left: 5px;
   }
@@ -89,22 +103,29 @@ textarea {
   display: flex;
   flex-direction: row;
   flex: 1;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
 
-#canvas-header mat-card {
+#canvas-header div {
   display: flex;
   flex-direction: column;
   margin: 0.25%;
+  height: fit-content;
+  padding: 5px;
   p {
     font-size: xx-small;
   }
+  border: 2px rgb(70, 70, 153) ridge;
+  background-color: white;
 }
 
 #left {
   flex: 2;
   > div {
     margin: 1%;
+  }
+  mat-card {
+    // background-color: lightgray;
   }
 }
 
@@ -118,22 +139,23 @@ textarea {
   padding-bottom: 2%;
   grid-template-columns: auto auto;
   grid-row-gap: 60px;
-  .mat-list-item ~ .mat-list-item {
-    margin-bottom: 20px;
-  }
+  // .mat-list-item ~ .mat-list-item {
+  //   margin-bottom: 20px;
+  // }
+}
+.canvas-grid-list-sx {
+  display: grid;
+  grid-template-columns: auto auto;
 }
 #canvas-grid-list-simple {
   display: grid;
-  grid-template-columns: auto auto;
-  .mat-list-item ~ .mat-list-item {
-    margin-bottom: 15px;
-  }
+  grid-template-columns: auto auto auto;
 }
 
-.grid-list {
+.grid-list-onedit {
   display: grid;
   grid-template-columns: auto auto;
-  grid-row-gap: 30px;
+  // grid-row-gap: 30px;
 }
 
 #grid-list {
@@ -143,40 +165,110 @@ textarea {
   //   font-weight: bold;
   // }
 }
-mat-selection-list {
+.single-column {
   display: grid;
   grid-template-columns: auto;
 }
 
 .list-7 {
-  display: grid;
-  grid-template-columns: 25% 45% auto;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  span:first-child {
+    font-weight: bold;
+  }
   mat-list-item:first-child {
     font-weight: bold;
   }
-
   mat-form-field {
-    width: 100%;
+    width: 80%;
   }
 }
 .list-grid-2 {
-  display: grid;
-  grid-template-columns: 25% 75%;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  span:first-child {
+    font-weight: bold;
+  }
   mat-list-item:first-child {
     font-weight: bold;
   }
-
   mat-form-field {
     width: 100%;
   }
 }
 .list-72 {
-  display: grid;
-  grid-template-columns: 25% 20% 20% 20%;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  // grid-template-columns: 25% 20% 20% 20%;
+  span:first-child {
+    font-weight: bold;
+  }
   mat-list-item:first-child {
     font-weight: bold;
   }
   mat-form-field {
-    width: 100%;
+    width: 90%;
   }
 }
+
+#canvas-mode {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  // width: 50%;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+
+.input-value {
+  font-weight: bold;
+  background-color: lightgrey;
+  padding: 10px;
+}
+
+// .list-7 {
+//   display: grid;
+//   grid-template-columns: 25% 45% auto;
+//   span:first-child {
+//     font-weight: bold;
+//   }
+//   mat-list-item:first-child {
+//     font-weight: bold;
+//   }
+//   mat-form-field {
+//     width: 100%;
+//   }
+// }
+// .list-grid-2 {
+//   display: grid;
+//   grid-template-columns: 25% 75%;
+//   span:first-child {
+//     font-weight: bold;
+//   }
+//   mat-list-item:first-child {
+//     font-weight: bold;
+//   }
+//   mat-form-field {
+//     width: 100%;
+//   }
+// }
+// .list-72 {
+//   display: grid;
+//   grid-template-columns: 25% 20% 20% 20%;
+//   span:first-child {
+//     font-weight: bold;
+//   }
+//   mat-list-item:first-child {
+//     font-weight: bold;
+//   }
+//   mat-form-field {
+//     width: 100%;
+//   }
+// }

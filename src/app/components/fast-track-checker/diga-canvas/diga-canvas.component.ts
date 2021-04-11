@@ -24,6 +24,7 @@ export class DigaCanvasComponent implements OnInit, AfterViewInit {
   message: any;
   data: any;
 
+  onEdit = true;
   questionnaire = false;
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -71,7 +72,22 @@ export class DigaCanvasComponent implements OnInit, AfterViewInit {
       'Gebühren pro Änderungsanzeige_(1.500 € ...4.900 €, § 26 DiGAV)',
       'Sonstige Gebühren im Kontext einer DiGA',
     ];
+    this.supportTypes = [
+      '... Überwachung oder Linderung von Krankheiten',
+      '... Linderung oder Kompensierung von Verletzungen oder Behinderung',
+      'Dient Primärprävention (keine DiGA)',
+    ];
+    this.usersegment = [
+      'Patienten',
+      'Patienten und Ärzte/Therapeuten gemeinsam',
+      'Nur Leistngserbringer, z.B. Praxisausstattung (keine DiGA)',
+    ];
 
+    this.zweckbestimmung = [
+      'Indikation',
+      'Kontraindikation',
+      'Patentengruppen',
+    ];
     this.poducerRequirements = [
       [
         'a) Medizinischer Nutzen',

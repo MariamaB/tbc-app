@@ -44,10 +44,10 @@ export class AppComponent {
   }
 
   public createPDF() {
-    console.log('Save as PDF...', window.innerWidth + '/' + window.innerHeight);
-    const element = document.getElementById('main-content');
+    const element = document.getElementById('canvas-container');
+    console.log('Save as PDF...', element);
 
-    const doc = new jsPDF('landscape', 'px', 'a4');
+    const doc = new jsPDF('l', 'px', 'a3');
     doc.html(element, {
       callback: function (pdf) {
         pdf.save();
@@ -55,37 +55,6 @@ export class AppComponent {
       // x: 10,
       // y: 10,
     });
-    this.html2canvas(element).then((canvas) => {
-      // const imgData = canvas.toDataURL('image/png');
-      // doc.addImage(
-      //   imgData,
-      //   0,
-      //   0,
-      //   window.innerWidth,
-      //   (canvas.height * window.innerWidth) / window.innerWidth
-      // );
-      // doc.save('canvas');
-    });
-    // const doc = new jspdf({
-    //   orientation: 'landscape',
-    //   unit: 'in',
-    //   format: [4, 2],
-    //   // format: 'a4',
-    // });
-
-    // (async () => {
-    //   const browser = await puppeteer.launch();
-    //   const page = await browser.newPage();
-    //   await page.goto('http://localhost:4200/home');
-    //   await page.emulateMediaType('screen');
-    //   await page.pdf({
-    //     path: 'canvas.pdf',
-    //     format: 'a4',
-    //     landscape: true,
-    //     printBackground: true,
-    //   });
-    //   await browser.close();
-    // })();
   }
   ngOnDestroy(): void {
     this.mediaSub.unsubscribe();
