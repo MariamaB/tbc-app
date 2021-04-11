@@ -1,26 +1,3 @@
-mat-drawer-container {
-  height: 100%;
-  padding: 5%;
-  // margin-bottom: 20px;
-}
-
-mat-drawer {
-  width: 20%;
-}
-
-mat-drawer-content {
-  padding: 2%;
-}
-
-//////////////////////
-mat-form-field {
-  width: 70%;
-  height: auto;
-}
-textarea {
-  height: 100px;
-}
-
 #mat-form-field {
   width: 80%;
   height: auto;
@@ -33,6 +10,12 @@ textarea {
   // background-color: rgb(248, 245, 245);
   // background-color: rgb(227, 237, 241);
   background-color: rgb(248, 253, 255);
+  // background-color: rgb(205, 235, 245);
+  width: 80%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #questionnaire mat-radio-group {
@@ -42,15 +25,6 @@ textarea {
 .grid-list {
   display: grid;
   grid-template-columns: auto auto auto auto;
-}
-
-#grid-list {
-  display: grid;
-  grid-template-columns: auto auto auto;
-
-  mat-selection-list mat-list-option:first-child {
-    font-weight: bold;
-  }
 }
 
 .list-7 {
@@ -110,7 +84,6 @@ textarea {
   display: flex;
   flex-direction: column;
   margin: 0.25%;
-  height: fit-content;
   padding: 5px;
   p {
     font-size: xx-small;
@@ -158,13 +131,6 @@ textarea {
   // grid-row-gap: 30px;
 }
 
-#grid-list {
-  display: grid;
-  grid-template-columns: auto auto;
-  // mat-selection-list mat-list-option:first-child {
-  //   font-weight: bold;
-  // }
-}
 .single-column {
   display: grid;
   grid-template-columns: auto;
@@ -174,43 +140,8 @@ textarea {
   display: flex;
   flex: 1;
   justify-content: space-between;
-  span:first-child {
-    font-weight: bold;
-  }
-  mat-list-item:first-child {
-    font-weight: bold;
-  }
-  mat-form-field {
-    width: 80%;
-  }
-}
-.list-grid-2 {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  span:first-child {
-    font-weight: bold;
-  }
-  mat-list-item:first-child {
-    font-weight: bold;
-  }
   mat-form-field {
     width: 100%;
-  }
-}
-.list-72 {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  // grid-template-columns: 25% 20% 20% 20%;
-  span:first-child {
-    font-weight: bold;
-  }
-  mat-list-item:first-child {
-    font-weight: bold;
-  }
-  mat-form-field {
-    width: 90%;
   }
 }
 
