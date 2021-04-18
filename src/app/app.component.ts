@@ -1,9 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { jsPDF } from 'jspdf';
 // import { element } from 'protractor';
 import * as html2canvasWrong from 'html2canvas';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +28,8 @@ export class AppComponent {
 
   mediaSub: Subscription;
   deviceXs: boolean;
+
+  public data: Observable<any>[];
 
   constructor(public mediaObserver: MediaObserver) {}
 
