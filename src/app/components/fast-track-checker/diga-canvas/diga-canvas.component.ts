@@ -1,5 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { MedicalIntendedUseComponent } from '../sub-components/medical-intended-use/medical-intended-use.component';
 
 @Component({
@@ -8,6 +13,14 @@ import { MedicalIntendedUseComponent } from '../sub-components/medical-intended-
   styleUrls: ['./diga-canvas.component.scss'],
 })
 export class DigaCanvasComponent implements OnInit, AfterViewInit {
+  formControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(1),
+  ]);
+  languageFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(1),
+  ]);
   public zweckbestimmung = [];
   public navList = [];
   name: string;
@@ -18,29 +31,38 @@ export class DigaCanvasComponent implements OnInit, AfterViewInit {
   poducerRequirements: string[][];
   normRequirements: string[];
   studyParameters: string[];
+  Risikoklasse: string[];
   marketAccess: any;
   val = '';
   languages = ['deutsch', 'englisch'];
   message: any;
   data: any;
 
+  mantainDeviceOnly = false;
+  technology = false;
+  riskClass = true;
   onEdit = true;
+  uniqutestValue = false;
+  testValue = false;
+  testtext = '';
   questionnaire = false;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   data2: string[];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  digaData$: Observable<any[]>;
+  constructor(private firestore: AngularFirestore) {
+    this.digaData$ = firestore.collection('data').valueChanges();
+    const data = this.digaData$
+      .toPromise()
+      .then((x) => console.log('TEST', JSON.stringify(x, null, 2)));
+    // console.log(JSON.stringify(data, null, 2));
+  }
   @ViewChild(MedicalIntendedUseComponent) child;
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
+    this.Risikoklasse = ['Kl. I', 'Kl. IIa', 'andere'];
     this.navList = [
       'Medizinische Zweckbestimmung',
       'Funktion',
