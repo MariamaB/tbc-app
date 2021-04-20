@@ -1,347 +1,386 @@
 <button mat-raised-button (click)="questionnaire = !questionnaire" id="toggle-linear">
- {{!questionnaire ? 'switch to questionnaire' : 'switch to canvas'}}
+  {{!questionnaire ? 'switch to questionnaire' : 'switch to canvas'}}
 </button>
 <button mat-raised-button (click)="onEdit = !onEdit" id="toggle-linear">
- {{!onEdit ? 'edit' : 'save'}}
+  {{!onEdit ? 'edit' : 'save'}}
 </button>
 
 <div style="display: flex; flex: 1; align-items: center; justify-content: center; padding: 5%;">
- <div id="canvas-container" *ngIf="!this.questionnaire">
-  <div id="canvas-header">
-   <div style="flex: 5;">
-    <ng-container *ngIf="!onEdit">
-     <p><strong>Bezeichnung der potentiellen Digitalen Gesundheitsanwendung DiGA:</strong></p>
-     <span>Hier kommt die Bezeichnung</span>
-    </ng-container>
-    <mat-form-field *ngIf="onEdit" style="width: 100%">
-     <input type="text" matInput [placeholder]="'Bezeichnung der potentiellen Digitalen Gesundheitsanwendung DiGA:'"
-      [value]="'Hier kommt die Bezeichnung'">
-    </mat-form-field>
-   </div>
-   <div style="flex: 4;">
-    <p><strong>Medizinprodukt-Risikoklasse (nach MDR):</strong></p>
-    <mat-radio-group [(ngModel)]="riskClass" id="margin-radio-button">
-     <mat-radio-button value="{{i}}" [disabled]="!onEdit" *ngFor="let element of Risikoklasse; index as i">
-      {{element}}
-     </mat-radio-button>
-     <i *ngIf="!riskClass" style="color: brown;"> keine DiGA</i>
-    </mat-radio-group>
-   </div>
-   <div style="flex: 1;">
-
-    <ng-container *ngIf="!onEdit">
-     <p><strong>Erstellt von:</strong></p>
-     <span>Name</span>
-    </ng-container>
-    <mat-form-field *ngIf="onEdit" style="width: 100%">
-     <input type="text" matInput [placeholder]="'Erstellt von:'" [value]="'Name'">
-    </mat-form-field>
-   </div>
-   <div style="flex: 1;">
-    <ng-container *ngIf="!onEdit">
-     <p><strong>Datum:</strong></p>
-     <span>01.01.2021</span>
-    </ng-container>
-    <mat-form-field *ngIf="onEdit" style="width: 100%">
-     <input type="date" matInput [placeholder]="'Datum:'" [value]="'01.01.2021'">
-    </mat-form-field>
-   </div>
-   <div style="flex: 1;">
-    <ng-container *ngIf="!onEdit">
-     <p><strong>Version:</strong></p>
-     <span>0.0.0</span>
-    </ng-container>
-    <mat-form-field *ngIf="onEdit" style="width: 100%">
-     <input matInput [placeholder]="'Version:'" [value]="'0.0.0'">
-    </mat-form-field>
-   </div>
-  </div>
-
-  <div id="canvas-content">
-   <div id="left">
-    <ng-container>
-     <p><strong>1. Medizinische Zweckbestimmung</strong></p>
-     <mat-card>
-      <div id="canvas-grid-list-simple" role="list">
-       <div *ngFor="let element of zweckbestimmung">
-        <p><strong>{{element}}</strong></p>
-        <p *ngIf="!onEdit">Hier kommt die Bezeichnung</p>
-        <mat-form-field *ngIf="onEdit" id="mat-form-field" appearance="fill">
-         <mat-label>{{element}}</mat-label>
-         <textarea value="gfbgsfs" class="textarea" matInput></textarea>
-        </mat-form-field>
-       </div>
-       <div *ngIf="onEdit" class="tiles">
-        <!-- <a (click)="openDialog()"><i class="material-icons-two-tone icon-space">add</i></a> -->
-        <a><i class="material-icons-two-tone icon-space">add</i></a>
-       </div>
-      </div>
-     </mat-card>
-    </ng-container>
-    <mat-card>
-
-     <mat-list class="canvas-grid-list-sx" role="list">
-      <div>
-       {{this.testValue}}
-       <p><strong>2. Was unterstutzt die digitale Anwendung?</strong></p>
-       <p>Erkennung, Behandlung, ... :</p>
-       <mat-radio-group aria-label="Select an option" [(ngModel)]="this.testValue">
-        <mat-radio-button [disabled]="!onEdit" class="single-column" value="{{element}}"
-         *ngFor="let element of supportTypes; index as i">
-         {{element}}
-        </mat-radio-button>
-       </mat-radio-group>
-      </div>
-      <div>
-       <p><strong>3. Wer sind die Nutzer der digitalen Anwendung</strong></p>
-       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button [disabled]="!onEdit" class="single-column" value="{{i}}"
-         *ngFor="let element of usersegment; index as i">
-         {{element}}
-        </mat-radio-button>
-       </mat-radio-group>
-      </div>
-     </mat-list>
-    </mat-card>
-    <mat-card>
-     <p><strong>4. Worin besteht die Hauptfunktionalität der Anwendung?</strong></p>
-     <mat-list class="canvas-grid-list" role="list">
-      <div>
-       <p>Die Hauptfunktion beruht auf digitalen Technologien?</p>
-       <mat-radio-group [(ngModel)]="technology" id="margin-radio-button" aria-label="Select an option">
-        <mat-radio-button [disabled]="!onEdit" value="1" [value]="true">ja
-        </mat-radio-button>
-        <mat-radio-button [disabled]="!onEdit" value="2" [value]="false">nein</mat-radio-button>
-        <i *ngIf="!technology" style="color: brown;"> keine DiGA</i>
-       </mat-radio-group>
-      </div>
-      <div>
-       <p><strong>Welches ist die digitale Hauptfunktionalität?</strong></p>
-       <p>Der medizinische Nutzen der M-sense Migräne App bezieht sich sowohl auf die Reduktion von Migränetagen
-        (Verbesserung des
-        Gesundheitszustands) als auch auf die Verbesserung der gesundheitsbezogenen Lebensqualität und der
-        Reduktion von
-        Kopfschmerztagen (als sekundärer Endpunkt).</p>
-      </div>
-     </mat-list>
-     <div>
-      {{testValue}}
-      <mat-checkbox (change)="mantainDeviceOnly = !mantainDeviceOnly" [(ngModel)]="testValue">
-       Die digitale Hauptfunktionalität besteht im Auslesen oder Steuern eines Gerätes
-      </mat-checkbox>
-      <i *ngIf="mantainDeviceOnly" style="color: brown;"> keine DiGA</i>
-     </div>
-    </mat-card>
-    <ng-container *ngIf="!onEdit">
-     <p><strong>5. DiGA-Anforderung Hersteller</strong></p>
-     <mat-card>
-      <mat-card-content>
-       <mat-selection-list class="single-column">
-        <mat-checkbox labelPosition="after" *ngFor="let element of normRequirements">
-         {{element}}
-        </mat-checkbox>
-       </mat-selection-list>
-      </mat-card-content>
-      <mat-card-subtitle>5.1 Welche positiven Versorgungseffekte mit direktem Patietenbezug können nachgewiesen
-       werden?</mat-card-subtitle>
-      <mat-list class="canvas-grid-list-sx">
-       <div>
-        <mat-selection-list class="single-column">
-         <p><strong>a) Medizinischer Nutzen</strong></p>
-         <mat-checkbox *ngFor="let element of poducerRequirements[0]; index as i">
-
-         </mat-checkbox>
-        </mat-selection-list>
-        <mat-selection-list class="single-column">
-         <p><strong>c) Ökonomischer Nutzen</strong></p>
-         <mat-checkbox *ngFor="let element of poducerRequirements[2]">
-          {{element}}
-         </mat-checkbox>
-        </mat-selection-list>
-       </div>
-       <mat-selection-list class="single-column">
-        <p><strong>b) Patientenrelevate Struktur- und Verfahrensverbesserungen</strong></p>
-        <mat-checkbox *ngFor="let element of poducerRequirements[1]">
-         {{element}}
-        </mat-checkbox>
-       </mat-selection-list>
-      </mat-list>
-     </mat-card>
-    </ng-container>
-
-   </div>
-   <div id="right">
-    <p><strong>6. DiGA-Anforderungen digitale Anwendung</strong></p>
-    <mat-card>
-     <mat-card-content>
-      <mat-selection-list class="canvas-grid-list-sx">
-       <mat-checkbox *ngFor="let element of appRequirements index as i">
-        {{i}}. {{element}}
-       </mat-checkbox>
-      </mat-selection-list>
-     </mat-card-content>
-    </mat-card>
-    <p><strong>7. Marktzugang</strong></p>
-    <mat-card>
-     <div id="canvas-mode" role="list" *ngFor="let section of marketAccess.sections">
-      <div style=" flex: 1;">
-       <span><strong>{{section.name}}:</strong></span>
-      </div>
-      <div style=" flex: 3; align-items: center;" class="list-7">
-       <mat-radio-group aria-label="Select an option"
-        *ngIf="section.name === 'Zuzahlung' || section.name === 'Zusatzgeräte'"
-        style="display: flex; flex: 3; justify-content: space-between; align-items: center;">
-        <!-- <mat-radio-button value="{{i}}" *ngFor="let option of marketAccess.options; index as i">
-                                    {{option}}
-                                  </mat-radio-button> -->
-        <mat-radio-button [disabled]="!onEdit" [disabled]="!onEdit" value="1">nein</mat-radio-button>
-        <mat-radio-button [disabled]="!onEdit" [disabled]="!onEdit" value="2">ja, folgendes: </mat-radio-button>
-        <span *ngIf="!onEdit" style="width: 120px;" class="input-value">{{section.inputFieled.placeholder}}</span>
-        <mat-form-field *ngIf="onEdit" style="width: fit-content;">
-         <input [type]="(section.name === 'Zuzahlung') ? 'number' : 'text' " matInput
-          [placeholder]="section.inputFieled.placeholder" [value]="section.inputFieled.input">
-        </mat-form-field>
-       </mat-radio-group>
-       <ng-container *ngIf="section.name === 'Sprachen' || section.name === 'Plattform'">
-        <span *ngFor="let element of section.options">
-         <mat-checkbox>
-          {{element}}
-         </mat-checkbox>
-        </span>
-        <ng-container *ngIf=" section.name==='Sprachen'">
-         <mat-checkbox [disabled]="!onEdit" [ngClass]="(!onEdit)? 'input-value' : '' " [(ngModel)]="uniqutestValue">
-          <ng-container *ngIf="!onEdit">
-           {{section.inputFieled.placeholder}}
-          </ng-container>
-          <mat-form-field *ngIf="onEdit">
-           <input [disabled]="!uniqutestValue" maxlength="20" [formControl]="uniqutestValue? languageFormControl :''"
-            matInput [placeholder]="section.inputFieled.placeholder" [(ngModel)]="testtext">
-           <mat-error *ngIf="languageFormControl.hasError('required') && this.uniqutestValue" align="start">
-            <strong>Add language!</strong>
-           </mat-error>
-           <mat-hint align="end">{{testtext.length}} / 20</mat-hint>
-          </mat-form-field>
-         </mat-checkbox>
+  <div id="canvas-container" *ngIf="!this.questionnaire">
+    <div id="canvas-header">
+      <div style="flex: 5;">
+        <ng-container *ngIf="!onEdit">
+          <p><strong>Bezeichnung der potentiellen Digitalen Gesundheitsanwendung DiGA:</strong></p>
+          <span>{{this.diga.name}}</span>
         </ng-container>
-       </ng-container>
-       <span
-        *ngIf="section.name != 'Sprachen' && section.name != 'Plattform' && section.name != 'Zuzahlung' && section.name != 'Zusatzgeräte'"
-        [ngClass]="(section.name === 'ICD-10-Code' || section.name === 'erste Verschreibung durch')? 'flex-2' : ''">
-        <span *ngIf="!onEdit" style="width: 120px;" class="input-value">{{section.inputFieled.placeholder}}</span>
-        <mat-form-field *ngIf="onEdit">
-         <input [formControl]="formControl" minlength="1" maxlength="30" matInput
-          [placeholder]="section.inputFieled.placeholder" [(ngModel)]="testtext">
-         <mat-error *ngIf="formControl.hasError('required')" align="start">
-          <strong>Input Required!</strong>
-         </mat-error>
-         <mat-hint align="end">{{testtext.length}} / 30</mat-hint>
+        <mat-form-field *ngIf="onEdit" style="width: 100%">
+          <input type="text" matInput
+            [placeholder]="'Bezeichnung der potentiellen Digitalen Gesundheitsanwendung DiGA:'"
+            [(ngModel)]="this.diga.name">
         </mat-form-field>
-       </span>
       </div>
-     </div>
-    </mat-card>
+      <div style="flex: 4;">
+        <p><strong>Medizinprodukt-Risikoklasse (nach MDR):</strong></p>
+        <mat-radio-group [(ngModel)]="this.diga.medRiskClase" id="margin-radio-button">
+          <ng-container *ngFor="let element of Risikoklasse">
+            <mat-radio-button [checked]="this.diga.medRiskClase === element" [value]="element" [disabled]="!onEdit">
+              {{element}}
+            </mat-radio-button>
+          </ng-container>
+
+          <i *ngIf="this.diga.medRiskClase === 'andere'" style="color: brown;"> keine DiGA</i>
+        </mat-radio-group>
+      </div>
+      <div style="flex: 1;">
+
+        <ng-container *ngIf="!onEdit">
+          <p><strong>Erstellt von:</strong></p>
+          <span>{{this.diga.name}}</span>
+        </ng-container>
+        <mat-form-field *ngIf="onEdit" style="width: 100%">
+          <input type="text" matInput [placeholder]="'Erstellt von:'" [(ngModel)]="this.diga.author">
+        </mat-form-field>
+      </div>
+      <div style="flex: 1;">
+        <ng-container *ngIf="!onEdit">
+          <p><strong>Datum:</strong></p>
+          <span>{{onEdit ? this.diga.date : this.diga.date.split('-')[2]+ '.'+
+            this.diga.date.split('-')[1]+'.'+this.diga.date.split('-')[0]}}</span>
+        </ng-container>
+        <mat-form-field *ngIf="onEdit" style="width: 100%">
+          <input type="date" matInput [placeholder]="'Datum:'" [(ngModel)]="this.diga.date">
+        </mat-form-field>
+      </div>
+      <div style="flex: 1;">
+        <ng-container *ngIf="!onEdit">
+          <p><strong>Version:</strong></p>
+          <span>{{this.diga.version}}</span>
+        </ng-container>
+        <mat-form-field *ngIf="onEdit" style="width: 100%">
+          <input matInput [placeholder]="'Version:'" [(ngModel)]="this.diga.version">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div id="canvas-content">
+      <div id="left">
+        <ng-container>
+          <p><strong>1. Medizinische Zweckbestimmung</strong></p>
+          <mat-card>
+            <div id="canvas-grid-list-simple" role="list">
+              <div *ngFor="let element of this.diga.intendedUse">
+                <p><strong>{{element.name}}</strong></p>
+                <p *ngIf="!onEdit">{{element.value}}</p>
+                <mat-form-field *ngIf="onEdit" id="mat-form-field" appearance="fill">
+                  <!-- <mat-label>{{element.name}}</mat-label> -->
+                  <textarea [(ngModel)]="element.value" class="textarea" matInput></textarea>
+                </mat-form-field>
+              </div>
+              <div *ngIf="onEdit" class="tiles">
+                <!-- <a (click)="openDialog()"><i class="material-icons-two-tone icon-space">add</i></a> -->
+                <a><i class="material-icons-two-tone icon-space">add</i></a>
+              </div>
+            </div>
+          </mat-card>
+        </ng-container>
+        <mat-card>
+
+          <mat-list class="canvas-grid-list-sx" role="list">
+            <div>
+              <p><strong>2. Was unterstutzt die digitale Anwendung?</strong></p>
+              <p>Erkennung, Behandlung, ... :</p>
+              <mat-radio-group [(ngModel)]="this.diga.medPurpose">
+                <ng-container *ngFor="let element of supportTypes">
+                  <mat-radio-button [checked]="this.diga.medPurpose === element" [disabled]="!onEdit"
+                    class="single-column" value="{{element}}">
+                    {{element}}
+                  </mat-radio-button>
+                </ng-container>
+              </mat-radio-group>
+            </div>
+            <div>
+              <p><strong>3. Wer sind die Nutzer der digitalen Anwendung</strong></p>
+              <mat-radio-group aria-label="Select an option" [(ngModel)]="this.diga.user">
+                <ng-container *ngFor="let element of usersegment">
+                  <mat-radio-button [checked]="this.diga.user === element" [disabled]="!onEdit" class="single-column"
+                    value="{{element}}">
+                    {{element}}
+                  </mat-radio-button>
+                </ng-container>
+
+              </mat-radio-group>
+            </div>
+          </mat-list>
+        </mat-card>
+        <mat-card>
+          <p><strong>4. Worin besteht die Hauptfunktionalität der Anwendung?</strong></p>
+          <mat-list class="canvas-grid-list" role="list">
+            <div>
+              <p>Die Hauptfunktion beruht auf digitalen Technologien?</p>
+              <mat-radio-group [(ngModel)]="this.diga.mainFunction.digitalTechnologie" id="margin-radio-button"
+                aria-label="Select an option">
+                <ng-container *ngFor="let element of jaNeinList">
+                  <mat-radio-button [checked]="this.diga.mainFunction.digitalTechnologie === element"
+                    [disabled]="!onEdit" [value]="element">{{element}}
+                  </mat-radio-button>
+                </ng-container>
+                <i *ngIf=" this.diga.mainFunction.digitalTechnologie === 'ja'? false : true " style="color: brown;">
+                  keine DiGA</i>
+              </mat-radio-group>
+            </div>
+            <div>
+              <p><strong>Welches ist die digitale Hauptfunktionalität?</strong></p>
+              <p>{{this.diga.mainFunction.description}}</p>
+            </div>
+          </mat-list>
+          <div>
+            <mat-checkbox [disabled]="!onEdit" (change)="mantainDeviceOnly = !mantainDeviceOnly"
+              [(ngModel)]="this.diga.mainFunction.onlyControlDevice">
+              Die digitale Hauptfunktionalität besteht im Auslesen oder Steuern eines Gerätes
+            </mat-checkbox>
+            <i *ngIf="mantainDeviceOnly" style="color: brown;"> keine DiGA</i>
+          </div>
+        </mat-card>
+        <ng-container *ngIf="!onEdit">
+          <p><strong>5. DiGA-Anforderung Hersteller</strong></p>
+          <mat-card>
+            <mat-card-content>
+              <mat-selection-list class="single-column">
+                <mat-checkbox [disabled]="!onEdit" labelPosition="after"
+                  *ngFor="let element of normRequirements;index as i"
+                  [(ngModel)]="this.diga.requirementManufacturer.certificates[i]">
+                  {{element}}
+                </mat-checkbox>
+              </mat-selection-list>
+            </mat-card-content>
+            <mat-card-subtitle>5.1 Welche positiven Versorgungseffekte mit direktem Patietenbezug können nachgewiesen
+              werden?</mat-card-subtitle>
+            <mat-list class="canvas-grid-list-sx">
+              <div>
+                <mat-selection-list class="single-column">
+                  <p><strong>a) Medizinischer Nutzen</strong></p>
+                  <mat-checkbox [disabled]="!onEdit" *ngFor="let element of poducerRequirements[0]; index as i"
+                    [(ngModel)]="this.diga.requirementManufacturer.medUse[i]">
+                    {{element}}
+                  </mat-checkbox>
+                </mat-selection-list>
+                <mat-selection-list class="single-column">
+                  <p><strong>c) Ökonomischer Nutzen</strong></p>
+                  <mat-checkbox [disabled]="!onEdit" *ngFor="let element of poducerRequirements[2]; index as i"
+                    [(ngModel)]="this.diga.requirementManufacturer.ecoUse[i]">
+                    {{element}}
+                  </mat-checkbox>
+                </mat-selection-list>
+              </div>
+              <mat-selection-list class="single-column">
+                <p><strong>b) Patientenrelevate Struktur- und Verfahrensverbesserungen</strong></p>
+                <mat-checkbox [disabled]="!onEdit" *ngFor="let element of poducerRequirements[1]; index as i"
+                  [(ngModel)]="this.diga.requirementManufacturer.strucProcoptimization[i]">
+                  {{element}}
+                </mat-checkbox>
+              </mat-selection-list>
+            </mat-list>
+          </mat-card>
+        </ng-container>
+
+      </div>
+      <div id="right">
+        <p><strong>6. DiGA-Anforderungen digitale Anwendung</strong></p>
+        <mat-card>
+          <mat-card-content>
+            <mat-selection-list class="canvas-grid-list-sx">
+              <mat-checkbox [disabled]="!onEdit" *ngFor="let element of appRequirements index as i"
+                [(ngModel)]="this.diga.requirementApplication[i]">
+                {{element}}
+              </mat-checkbox>
+            </mat-selection-list>
+          </mat-card-content>
+        </mat-card>
+        <p><strong>7. Marktzugang</strong></p>
+        <mat-card>
+          <div id="canvas-mode" role="list" *ngFor="let section of marketAccess.sections">
+            <div style=" flex: 1;">
+              <span><strong>{{section.name}}:</strong></span>
+            </div>
+            <div style=" flex: 3; align-items: center;" class="list-7">
+              <mat-radio-group aria-label="Select an option"
+                *ngIf="section.name === 'Zuzahlung' || section.name === 'Zusatzgeräte'"
+                [(ngModel)]="section.name === 'Zuzahlung'? this.diga.marketAccess.additionalPayment.answer : this.diga.marketAccess.additionalDevices.answer"
+                style="display: flex; flex: 3; justify-content: space-between; align-items: center;">
+                <ng-container *ngFor="let option of marketAccess.options">
+                  <mat-radio-button
+                    [checked]="section.name === 'Zuzahlung' && this.diga.marketAccess.additionalPayment.answer === option || section.name === 'Zusatzgeräte' && this.diga.marketAccess.additionalDevices.answer === option "
+                    [disabled]="!onEdit" [value]="option">
+                    {{option}}
+                  </mat-radio-button>
+                </ng-container>
+                <span *ngIf="!onEdit" style="width: 120px;" class="input-value">{{(section.name === 'Zuzahlung' )?
+                  this.diga.marketAccess.additionalPayment.amount :
+                  this.diga.marketAccess.additionalDevices.devices}}</span>
+                <mat-form-field *ngIf="onEdit" style="width: fit-content;">
+                  <input [type]="(section.name === 'Zuzahlung') ? 'number' : 'text' " matInput
+                    [(ngModel)]="(section.name === 'Zuzahlung') ? this.diga.marketAccess.additionalPayment.amount : this.diga.marketAccess.additionalDevices.devices">
+                </mat-form-field>
+              </mat-radio-group>
+              <ng-container *ngIf="section.name === 'Sprachen' || section.name === 'Plattform'">
+                <span *ngFor="let element of section.options; index as i">
+                  <mat-checkbox [disabled]="!onEdit"
+                    [(ngModel)]="section.name === 'Sprachen' ? this.diga.marketAccess.languages.defaultLang[i] : this.diga.marketAccess.platform[i]">
+                    {{element}}
+                  </mat-checkbox>
+                </span>
+                <ng-container *ngIf=" section.name==='Sprachen'">
+                  <mat-checkbox [disabled]="!onEdit" [disabled]=" !onEdit" [ngClass]="(!onEdit)? 'input-value' : '' "
+                    [(ngModel)]="this.diga.marketAccess.languages.otherLang.checked">
+                    <ng-container *ngIf="!onEdit">
+                      {{(this.diga.marketAccess.languages.otherLang.languages.length > 1 )?
+                      this.diga.marketAccess.languages.otherLang.languages : section.inputFieled.placeholder}}
+                    </ng-container>
+                    <mat-form-field *ngIf="onEdit">
+                      <input [disabled]="!this.diga.marketAccess.languages.otherLang.checked" maxlength="20"
+                        [formControl]="this.diga.marketAccess.languages.otherLang.checked ? languageFormControl :''"
+                        matInput [placeholder]="section.inputFieled.placeholder"
+                        [(ngModel)]="this.diga.marketAccess.languages.otherLang.languages">
+                      <mat-error
+                        *ngIf="languageFormControl.hasError('required') && this.diga.marketAccess.languages.otherLang.checked"
+                        align="start">
+                        <strong>Add language!</strong>
+                      </mat-error>
+                      <mat-hint align="end">{{this.diga.marketAccess.languages.otherLang.languages.length}} / 20
+                      </mat-hint>
+                    </mat-form-field>
+                  </mat-checkbox>
+                </ng-container>
+              </ng-container>
+              <span
+                *ngIf="section.name != 'Sprachen' && section.name != 'Plattform' && section.name != 'Zuzahlung' && section.name != 'Zusatzgeräte'"
+                [ngClass]="(section.name === 'ICD-10-Code' || section.name === 'erste Verschreibung durch')? 'flex-2' : ''">
+                <span *ngIf="!onEdit" style="width: 120px;" class="input-value">{{(section.name === 'ICD-10-Code') ?
+                  this.diga.marketAccess.icd10code : this.diga.marketAccess.initPrescription}}</span>
+                <mat-form-field *ngIf="onEdit">
+                  <input [(ngModel)]="section.name === 'ICD-10-Code'? this.diga.marketAccess.icd10code :
+                    this.diga.marketAccess.initPrescription"
+                    [formControl]="section.name === 'ICD-10-Code'? icd10FormControl : formControl" minlength="1"
+                    maxlength="30" matInput>
+                  <mat-error
+                    *ngIf="section.name === 'ICD-10-Code'?icd10FormControl.hasError('required'):formControl.hasError('required')"
+                    align="start">
+                    <strong>Input Required!</strong>
+                  </mat-error>
+                  <mat-hint align="end">{{section.name === 'ICD-10-Code'? this.diga.marketAccess.icd10code.length :
+                    this.diga.marketAccess.initPrescription.length}} / 30</mat-hint>
+                </mat-form-field>
+              </span>
+            </div>
+          </div>
+        </mat-card>
+        <ng-container *ngIf="!onEdit">
+          <p><strong>8. Welche sind die nächsten Schritte des Herstellers?</strong></p>
+          <mat-card style="border: 3px rgb(70, 70, 153) ridge;">
+            <mat-list class="canvas-grid-list-sx">
+              <!-- <mat-list-item role="listitem" *ngFor="let element of data">
+                <mat-checkbox [disabled]="!onEdit" > -->
+              <mat-checkbox [disabled]="!element.checked" *ngFor="let element of data" [(ngModel)]="element.checked">
+                {{element.value}}
+              </mat-checkbox>
+              <!-- </mat-list-item> -->
+            </mat-list>
+          </mat-card>
+          <p><strong>9. Gebühren und Auslagen für Hersteller (Auszug):</strong></p>
+          <mat-card>
+            <ng-container *ngFor="let element of data2">
+              <div style="display: flex; flex: 1; align-items: center;" *ngIf="onEdit">
+                <span style="flex: 2;"> {{element}}}</span>
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="... €" value="">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="display: flex; flex: 1; align-items: center; margin-top: 2px;" *ngIf="!onEdit">
+                <span style="flex: 2;"> {{element.name}}}</span>
+                <span style="width: 7%;" class="input-value">{{element.amount}}</span>
+              </div>
+            </ng-container>
+          </mat-card>
+        </ng-container>
+
+      </div>
+    </div>
     <ng-container *ngIf="!onEdit">
-     <p><strong>8. Welche sind die nächsten Schritte des Herstellers?</strong></p>
-     <mat-card style="border: 3px rgb(70, 70, 153) ridge;">
-      <mat-list class="canvas-grid-list-sx">
-       <!-- <mat-list-item role="listitem" *ngFor="let element of data">
-                <mat-checkbox> -->
-       <mat-checkbox *ngFor="let element of data">
-        {{element}}
-       </mat-checkbox>
-       <!-- </mat-list-item> -->
-      </mat-list>
-     </mat-card>
-     <p><strong>9. Gebühren und Auslagen für Hersteller (Auszug):</strong></p>
-     <mat-card>
-      <ng-container *ngFor="let element of data2">
-       <div style="display: flex; flex: 1; align-items: center;" *ngIf="onEdit">
-        <span style="flex: 2;"> {{element}}}</span>
-        <div>
-         <mat-form-field>
-          <input matInput placeholder="... €" value="">
-         </mat-form-field>
+      <mat-card>
+        <mat-card-subtitle style="margin-top: 20px;">5.2 Wird eine Studie hierzu durchgeführt?</mat-card-subtitle>
+        <div class="grid-list">
+          <div *ngFor="let element of this.diga.requirementManufacturer.studie">
+            <p><strong>{{element.name}}</strong></p>
+            <p *ngIf="!onEdit">{{element.value}}</p>
+            <mat-form-field *ngIf="onEdit" id="mat-form-field" appearance="fill">
+              <mat-label>{{element.name}}</mat-label>
+              <textarea [(ngModel)]="element.value" class="textarea" matInput></textarea>
+            </mat-form-field>
+          </div>
         </div>
-       </div>
-       <div style="display: flex; flex: 1; align-items: center; margin-top: 2px;" *ngIf="!onEdit">
-        <span style="flex: 2;"> {{element}}}</span>
-        <span class="input-value"> 3000 €</span>
-       </div>
-      </ng-container>
-     </mat-card>
+      </mat-card>
     </ng-container>
 
-   </div>
+    <ng-container *ngIf="onEdit">
+      <p><strong>5. DiGA-Anforderung Hersteller</strong></p>
+      <mat-card>
+        <div style="display: flex; justify-content: space-between; flex: 1;">
+          <div class="flex-3">
+            <mat-card-content>
+              <mat-selection-list class="single-column">
+                <mat-checkbox [disabled]="!onEdit" labelPosition="after"
+                  *ngFor="let element of normRequirements;index as i"
+                  [(ngModel)]="this.diga.requirementManufacturer.certificates[i]">
+                  {{element}}
+                </mat-checkbox>
+              </mat-selection-list>
+            </mat-card-content>
+            <mat-card-subtitle>5.1 Welche positiven Versorgungseffekte mit direktem Patietenbezug können nachgewiesen
+              werden?</mat-card-subtitle>
+            <mat-list class="canvas-grid-list-sx">
+              <div>
+                <mat-selection-list class="single-column">
+                  <p><strong>a) Medizinischer Nutzen</strong></p>
+                  <mat-checkbox [disabled]="!onEdit" *ngFor="let element of poducerRequirements[0]; index as i"
+                    [(ngModel)]="this.diga.requirementManufacturer.medUse[i]">
+                    {{element}}
+                  </mat-checkbox>
+                </mat-selection-list>
+                <mat-selection-list class="single-column">
+                  <p><strong>c) Ökonomischer Nutzen</strong></p>
+                  <mat-checkbox [disabled]="!onEdit" *ngFor="let element of poducerRequirements[2]; index as i"
+                    [(ngModel)]="this.diga.requirementManufacturer.ecoUse[i]">
+                    {{element}}
+                  </mat-checkbox>
+                </mat-selection-list>
+              </div>
+              <mat-selection-list class="single-column">
+                <p><strong>b) Patientenrelevate Struktur- und Verfahrensverbesserungen</strong></p>
+                <mat-checkbox [disabled]="!onEdit" *ngFor="let element of poducerRequirements[1]; index as i"
+                  [(ngModel)]="this.diga.requirementManufacturer.strucProcoptimization[i]">
+                  {{element}}
+                </mat-checkbox>
+              </mat-selection-list>
+            </mat-list>
+          </div>
+          <div class="flex-2" style="">
+            <mat-card-subtitle style="margin-top: 20px;">5.2 Wird eine Studie hierzu durchgeführt?</mat-card-subtitle>
+            <div class="grid-list-onedit">
+              <div *ngFor="let element of this.diga.requirementManufacturer.studie">
+                <p *ngIf="onEdit || !onEdit && element.value.length > 0"><strong>{{element.name}}</strong></p>
+                <p *ngIf="!onEdit && element.value.length > 1">{{element.value}}</p>
+                <mat-form-field *ngIf="onEdit" id="mat-form-field" appearance="fill">
+                  <mat-label>{{element.name}}</mat-label>
+                  <textarea [(ngModel)]="element.value" class="textarea" matInput></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </mat-card>
+    </ng-container>
   </div>
-  <ng-container *ngIf="!onEdit">
-   <mat-card>
-    <mat-card-subtitle style="margin-top: 20px;">5.2 Wird eine Studie hierzu durchgeführt?</mat-card-subtitle>
-    <div class="grid-list">
-     <div *ngFor="let element of studyParameters">
-      <p><strong>{{element}}</strong></p>
-      <p *ngIf="!onEdit">Hier kommt die Bezeichnung</p>
-      <mat-form-field *ngIf="onEdit" id="mat-form-field" appearance="fill">
-       <mat-label>{{element}}</mat-label>
-       <textarea value="gfbgsfs" class="textarea" matInput></textarea>
-      </mat-form-field>
-     </div>
-    </div>
-   </mat-card>
-  </ng-container>
-
-  <ng-container *ngIf="onEdit">
-   <p><strong>5. DiGA-Anforderung Hersteller</strong></p>
-   <mat-card>
-    <div style="display: flex; justify-content: space-between; flex: 1;">
-     <div class="flex-3">
-      <mat-card-content>
-       <mat-selection-list class="single-column">
-        <mat-checkbox labelPosition="after" *ngFor="let element of normRequirements">
-         {{element}}
-        </mat-checkbox>
-       </mat-selection-list>
-      </mat-card-content>
-      <mat-card-subtitle>5.1 Welche positiven Versorgungseffekte mit direktem Patietenbezug können nachgewiesen
-       werden?</mat-card-subtitle>
-      <mat-list class="canvas-grid-list-sx">
-       <div>
-        <mat-selection-list class="single-column">
-         <p><strong>a) Medizinischer Nutzen</strong></p>
-         <mat-checkbox *ngFor="let element of poducerRequirements[0] index as i">
-          {{i}}. {{element}}
-         </mat-checkbox>
-        </mat-selection-list>
-        <mat-selection-list class="single-column">
-         <p><strong>c) Ökonomischer Nutzen</strong></p>
-         <mat-checkbox *ngFor="let element of poducerRequirements[2]">
-          {{element}}
-         </mat-checkbox>
-        </mat-selection-list>
-       </div>
-       <mat-selection-list class="single-column">
-        <p><strong>b) Patientenrelevate Struktur- und Verfahrensverbesserungen</strong></p>
-        <mat-checkbox *ngFor="let element of poducerRequirements[1] index as i">
-         {{i}}. {{element}}
-        </mat-checkbox>
-       </mat-selection-list>
-      </mat-list>
-     </div>
-     <div class="flex-2" style="">
-      <mat-card-subtitle style="margin-top: 20px;">5.2 Wird eine Studie hierzu durchgeführt?</mat-card-subtitle>
-      <div class="grid-list-onedit">
-       <div *ngFor="let element of studyParameters">
-        <p><strong>{{element}}</strong></p>
-        <p *ngIf="!onEdit">Hier kommt die Bezeichnung</p>
-        <mat-form-field *ngIf="onEdit" id="mat-form-field" appearance="fill">
-         <mat-label>{{element}}</mat-label>
-         <textarea value="gfbgsfs" class="textarea" matInput></textarea>
-        </mat-form-field>
-       </div>
-      </div>
-     </div>
-    </div>
-
-   </mat-card>
-  </ng-container>
- </div>
 </div>

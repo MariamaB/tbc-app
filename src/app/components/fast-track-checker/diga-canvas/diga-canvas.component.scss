@@ -2,7 +2,7 @@
   width: 80%;
   height: auto;
   textarea {
-    height: 50px;
+    height: 85px;
   }
 }
 .tiles {
@@ -24,11 +24,13 @@
 
 .grid-list {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  column-gap: 2%;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 .list-7 {
   display: grid;
+
   grid-template-columns: 25% 45% auto;
   mat-list-item:first-child {
     font-weight: bold;
@@ -122,7 +124,9 @@
 }
 #canvas-grid-list-simple {
   display: grid;
-  grid-template-columns: auto auto auto;
+
+  grid-column-gap: 2%;
+  grid-template-columns: 30% 30% 30%;
 }
 
 .grid-list-onedit {
@@ -149,6 +153,7 @@
   display: flex;
   flex: 1;
   align-items: center;
+  margin-bottom: 2%;
   // width: 50%;
 }
 .flex-2 {
@@ -159,6 +164,7 @@
 }
 
 .input-value {
+  // width: 7%;
   font-weight: bold;
   background-color: lightgrey;
   padding: 10px;
