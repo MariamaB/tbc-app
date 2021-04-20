@@ -3,8 +3,8 @@
     {
       "name": "M-sense Migräne 001 00315001",
       "medRiskClase": "",
-      "author": "Miriam",
-      "date": "21.04.2021",
+      "author": "John Doe",
+      "date": "2021-04-21",
       "version": "1.0.1",
       "intendedUse": [
         {
@@ -28,8 +28,7 @@
         "onlyControlDevice": false
       },
       "requirementManufacturer": {
-        "medConformity-CE": true,
-        "dataProtecSecur-CE": true,
+        "certificates": [true, true],
         "medUse": [true, false, false, true],
         "ecoUse": [false, false],
         "strucProcoptimization": [
@@ -42,12 +41,21 @@
           true,
           false
         ],
-        "studie": {
-          "goals": "Geplant ist eine randomisierte, kontrollierte Studie (RCT) zur Bewertung der 'Effektivität der M-sense Migräne-App' (EMMA-Studie).",
-          "method": "EMMA ist eine randomisierte, offene, kontrollierte, zweiarmige Parallelgruppenstudie. Die Intervention besteht in der Nutzung des M-sense Migräne App für 12 Wochen.Die Patienten werden nach dem Zufallsprinzip im Verhältnis 1:1 einer der beiden Gruppen zugeteilt, um entweder Zugang zur vollständigen M-sense Migräne App oder zur Kontrollgruppen-App zu erhalten.",
-          "parameter": "Erwachsene Patienten mit episodischer oder chronischer Migräne (ICD-10 G43), die ein Smartphone besitzen und daran interessiert sind, eine App als nicht-medikamentöse Intervention zu nutzen",
-          "dataSource": ""
-        }
+        "studie": [
+          {
+            "name": "Ziel",
+            "value": "Geplant ist eine randomisierte kontrollierte Studie (RCT) zur Bewertung der Effektivität der M-sense Migräne-App (EMMA-Studie)."
+          },
+          {
+            "name": "Methode",
+            "value": "EMMA ist eine randomisierte, offene, kontrollierte, zweiarmige Parallelgruppenstudie. Die Intervention besteht in der Nutzung des M-sense Migräne App für 12 Wochen.Die Patienten werden nach dem Zufallsprinzip im Verhältnis 1:1 einer der beiden Gruppen zugeteilt, um entweder Zugang zur vollständigen M-sense Migräne App oder zur Kontrollgruppen-App zu erhalten."
+          },
+          {
+            "name": "Parameter",
+            "value": "Erwachsene Patienten mit episodischer oder chronischer Migräne (ICD-10 G43), die ein Smartphone besitzen und daran interessiert sind, eine App als nicht-medikamentöse Intervention zu nutzen"
+          },
+          { "name": "Datenquelle", "value": "" }
+        ]
       },
       "requirementApplication": [true, true, true, true, true, true, true],
       "marketAccess": {
@@ -58,7 +66,7 @@
         },
         "additionalDevices": {
           "answer": "nein",
-          "devices": ""
+          "devices": "..."
         },
         "icd10code": "ICD-10 G43",
         "languages": {
